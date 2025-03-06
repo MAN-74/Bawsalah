@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bawsalah - Sign-Up Page</title>
+  <link rel="stylesheet" href="Log-SignStyles.css">
+  <script src="signup.js"></script>
+</head>
+<body>
+
+    <header class="header">
+        <div class="logo-container">
+            <a href="home.html">
+            <img src="images\logo.png" alt="Logo" class="nav-icon"></a>
+        </div>
+    </header>
+
+    <nav class="breadcrumb">
+        <span><a href="home.html" style="text-decoration: none; color: #7C1F1B;">Home</a> &gt; <a href="signup.html" style="text-decoration: none; color: #7C1F1B;">Sign-Up</a></span>
+        <div class="divider"></div>
+    </nav>
+
+  <main class="main-container">
+    <section class="signup-content">
+      <div class="signup">
+        <h2 class="signup-heading">Join now and explore!</h2>
+        <form id="signup-form" onsubmit="validateForm(event)">
+          <div class="form-group">
+            <span class="name-icon">👤</span>
+            <input type="text" id="name" placeholder="Enter your name" class="form-field">
+          </div>
+          <p id="name-error" class="error-message"></p>
+          
+          <div class="form-group">
+            <span class="email-icon">@</span>
+            <input type="email" id="email" placeholder="Enter your email" class="form-field">
+          </div>
+          <p id="email-error" class="error-message"></p>
+          
+          <div class="form-group">
+            <span class="password-icon">🔒</span>
+            <input type="password" id="password" placeholder="Enter your password" class="form-field">
+          </div>
+          <p id="password-error" class="error-message"></p>
+          
+          <div class="form-group">
+            <span class="password-icon">🔒</span>
+            <input type="password" id="confirm-password" placeholder="Confirm password" class="form-field">
+          </div>
+          <p id="confirm-password-error" class="error-message"></p>
+          
+          <button type="submit" class="signup-button">Sign Up</button>
+        </form>
+      </div>
+      <div class="image-section">
+        <img src="images\image3.jpeg" class="signup-image"al t="Gulf Adventures">
+      </div>
+    </section>
+  </main>
+  <footer class="footer">
+    <div class="footer-links">
+        <a href="about.html">About Us</a>
+        <a href="contact.html">Contact</a>
+        <a href="privacy.html">Privacy Policy</a>
+        <a href="terms.html">Terms of Service</a>
+    </div>
+    <p>&copy; 2025 Bawsalah All rights reserved.</p>
+</footer>
+</body>
+</html>
+
+
+

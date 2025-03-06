@@ -1,0 +1,187 @@
+/* Base styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Chenla", sans-serif;
+  }
+  
+  body {
+    background-color: #fdf8ef;
+  }
+  
+  /* Footer styles */
+ .footer{
+  background-color: #7C1F1B;
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 0 0 30px 30px;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  width: 100%;
+}
+
+.footer {
+  padding: 10px;
+  border-radius: 30px 30px 0 0;
+  flex-direction: column;
+  text-align: center;
+  margin-top: 10px;
+}
+
+.footer-links {
+  display: flex;
+  gap: 20px;
+  margin-top: 10px;
+}
+
+.footer-links a {
+  color: #CBB696;
+  text-decoration: none;
+  transition: color 0.3s ease;
+  font-size: 14px;
+}
+
+.footer-links a:hover {
+  color: #ae9c80;
+}
+
+.footer p {
+  color: #CBB696;
+  margin-top: 3px;
+  font-size: 12px;
+}
+  /* Main container */
+  .landing-container {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding-left: 50px;    
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  /* Content wrapper */
+  .content-wrapper {
+    text-align: left;
+    position: relative;
+    z-index: 2;
+  }
+  
+  /* Header section */
+  .header-section {
+    margin-bottom: 20px;
+    text-align: left;
+  }
+  
+  /* Site title */
+  .site-title {
+    color: #7c1f1b;
+    font-size: 72px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+    margin-bottom: 5px;
+  }
+  
+  .site-title::after {
+    content: "";
+    display: inline-block;
+    width: 100px; 
+    height: 80px; 
+    background-image: url('images/logoC.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    margin-left: 10px;
+}
+
+
+  /* Site subtitle */
+  .site-subtitle {
+    color: #7c1f1b;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+    font-size: 24px;
+    margin-bottom: 30px;
+  }
+  
+  /* Authentication section */
+  .auth-section {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; 
+  }
+  
+  /* Login button */
+  .login-button {
+    border-radius: 25px;
+    padding: 10px 15px;
+    width: 250px;
+    color: #fdf8ef;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+    font-size: 20px;
+    text-align: center;
+    cursor: pointer;
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+    margin-top: 30px;
+    margin-bottom: 10px;
+    background-color: rgba(102, 89, 69, 0.9);
+    border: none;
+    transition: background-color 0.3s ease;
+  }
+
+  .login-button:hover {
+    background-color: rgba(82, 72, 55, 0.9);
+  }
+  
+  /* Signup text */
+  .signup-text {
+    color: #665945;
+    font-size: 18px;
+    text-align: center;  
+    margin-left: 45px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+  }
+  
+  /* Signup link */
+  .signup-link {
+    color: #7c1f1b;
+    cursor: pointer;
+    text-decoration: none;
+    transition: text-decoration 0.3s ease;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+  }
+  
+  .signup-link:hover {
+    text-decoration: underline;
+  }
+  
+  /* Desert image */
+  .desert-image {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 50%;
+    max-width: 600px;
+    height: auto;
+    border-radius: 50%;
+    box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .desert-image:hover {
+    transform: scale(1.05);
+    box-shadow: 0 12px 20px rgba(0, 0, 0, 0.15);
+  }
+  
+  /* Site logo */
+  .site-logo {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    width: 100px;
+    height: auto;
+  }
+
+
+
