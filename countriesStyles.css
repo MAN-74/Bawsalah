@@ -1,79 +1,110 @@
+@import url('https://fonts.googleapis.com/css2?family=Prompt:wght@400&family=Chenla&display=swap');
+
 body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: #f5f5f5;
+    width: 100%;
+    min-height: 100vh;
+    background-color: #fff7ed;
 }
 
-.container {
-    max-width: 1200px;
-    margin: auto;
-    padding: 20px;
-}
-
-.header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px;
-}
-
-.logo {
-    width: 120px;
-}
-
-.heart, .profile {
-    width: 30px;
-}
-
-.breadcrumb {
+header {
     display: flex;
     align-items: center;
-    margin: 20px 0;
-    font-size: 14px;
-    color: gray;
+    padding: 0 1.75rem;
+    background-color: #7f1d1d;
+    opacity: 0.9;
+    height: 126px;
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
 }
 
-.breadcrumb .arrow {
-    width: 10px;
-    margin: 0 5px;
+header img {
+    height: 110px;
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25) inset;
 }
 
-.content h1 {
-    font-size: 28px;
-    margin-bottom: 20px;
-}
-
-.country {
-    margin-bottom: 30px;
-}
-
-.country h2 {
-    font-size: 22px;
-    margin-bottom: 10px;
-}
-
-.cards {
+nav {
     display: flex;
-    gap: 15px;
-    flex-wrap: wrap;
+    gap: 0.625rem;
+    align-items: center;
+    margin: 1.25rem 0 0 4rem;
+    font-size: 1.5rem;
+    color: #991b1b;
+}
+
+main {
+    padding: 2.5rem 4rem;
+}
+
+h1, h2 {
+    text-align: center;
+    color: #991b1b;
+}
+
+h1 {
+    font-size: 3.75rem;
+    margin-bottom: 4rem;
+}
+
+h2 {
+    font-size: 2.5rem;
+    margin-bottom: 1.25rem;
+}
+
+section {
+    margin-bottom: 5rem;
+}
+
+.cards-container {
+    display: flex;
+    justify-content: space-around;
+    padding: 2.5rem;
+    border-radius: 1.875rem;
+    background-color: rgba(127, 29, 29, 0.9);
 }
 
 .card {
-    background: white;
-    border-radius: 10px;
-    padding: 10px;
-    text-align: center;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    width: 150px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 1.25rem;
+    background-color: #a8a29e;
+    border-radius: 45px;
+    width: 369px;
+    height: 521px;
 }
 
 .card img {
-    width: 100%;
-    border-radius: 8px;
+    max-width: 100%;
+    max-height: 100%;
+    border-radius: 1.5rem;
 }
 
 .card h3 {
-    margin-top: 8px;
-    font-size: 16px;
+    margin-top: auto;
+    font-size: 2.5rem;
+    color: black;
+}
+
+@media (max-width: 768px) {
+    nav {
+        margin-left: 1.25rem;
+        font-size: 1.125rem;
+    }
+    main {
+        padding: 1.25rem;
+    }
+    h1 {
+        font-size: 2.5rem;
+    }
+    h2 {
+        font-size: 1.875rem;
+    }
+    .cards-container {
+        flex-direction: column;
+        gap: 1.25rem;
+        align-items: center;
+    }
+    .card {
+        width: 80%;
+        height: auto;
+    }
 }
