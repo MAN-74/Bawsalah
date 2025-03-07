@@ -1,0 +1,134 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Header */
+.site-header {
+    background-color: #7c1f1b;
+    border-radius: 0 0 30px 30px;
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+    width: 100%;
+    padding: 16px 32px;
+}
+
+.header-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.logo-container {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.primary-logo {
+    width: 150px;
+}
+
+.secondary-logo, .tertiary-logo {
+    width: 60px;
+}
+
+/* Breadcrumb */
+.breadcrumb-nav {
+    display: flex;
+    align-items: center;
+    margin-top: 20px;
+    gap: 20px;
+}
+
+.breadcrumb-title {
+    font-size: 22px;
+    color: #9e1a1a;
+    text-align: center;
+}
+
+.breadcrumb-divider {
+    flex-grow: 1;
+    border-bottom: 2px solid #9e1a1a;
+}
+
+/* Main Content */
+.main-content {
+    background-color: #fffaf1;
+    padding: 60px 20px;
+}
+
+.hero-image {
+    width: 100%;
+    border-radius: 15px;
+    margin-top: 20px;
+}
+
+/* About Section */
+.section-title {
+    font-size: 50px;
+    text-align: center;
+    color: #9e1a1a;
+    margin-bottom: 20px;
+}
+
+.about-description {
+    font-size: 20px;
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+/* Accommodations */
+.accommodations-grid {
+    background-color: rgba(124, 31, 27, 0.95);
+    border-radius: 20px;
+    padding: 20px;
+}
+
+.accommodation-row {
+    display: flex;
+    gap: 15px;
+}
+
+.accommodation-card {
+    flex: 1;
+    background-color: white;
+    border-radius: 15px;
+    overflow: hidden;
+    padding: 10px;
+    text-align: center;
+}
+
+.card-image {
+    width: 100%;
+    border-radius: 15px;
+}
+
+.rating-image {
+    width: 80px;
+    margin-top: 5px;
+}
+
+/* Responsive Fixes */
+@media (max-width: 991px) {
+    .site-header {
+        padding: 10px;
+    }
+
+    .breadcrumb-nav {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .accommodation-row {
+        flex-direction: column;
+    }
+
+    .accommodation-card {
+        width: 100%;
+    }
+
+    .section-title {
+        font-size: 40px;
+    }
+}
