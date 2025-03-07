@@ -1,181 +1,41 @@
-<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Countries</title>
-    <link
-      href="https://fonts.googleapis.com/css2?family=Prompt:wght@400&family=Chenla&display=swap"
-      rel="stylesheet"
-    />
-    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="styles.css">
   </head>
   <body>
-    <div class="w-full min-h-screen bg-orange-50">
-      <header
-        class="flex relative items-center px-7 py-0 bg-red-900 rounded-none opacity-90 h-[126px] shadow-[0_4px_4px_rgba(0,0,0,0.25)] max-sm:px-4 max-sm:py-0 max-sm:h-20"
-      >
-        <img
-          src="https://cdn.builder.io/api/v1/image/assets/TEMP/7f28a990dd794d6406a1d59e54fe6021e21eb039"
-          class="h-[110px] shadow-[0_4px_4px_rgba(0,0,0,0.25)_inset] w-[154px] max-sm:h-auto max-sm:w-[100px]"
-          alt="Logo"
-        />
-        <img
-          src="https://cdn.builder.io/api/v1/image/assets/TEMP/5e64939b43a3a35c821560a6b176956fe55d1ead"
-          class="ml-2.5 w-16 h-16 max-sm:w-10 max-sm:h-10"
-          alt="Heart"
-        />
-        <img
-          src="https://cdn.builder.io/api/v1/image/assets/TEMP/77fa3df1a930790cb7a8c37b655d4dbbb6f1e4fb"
-          class="ml-auto h-[69px] w-[69px] max-sm:w-10 max-sm:h-10"
-          alt="Profile"
-        />
+    <div>
+      <header>
+        <img src="logo.png" alt="Logo" />
+        <img src="heart.png" alt="Heart" />
+        <img src="profile.png" alt="Profile" />
       </header>
 
-      <nav
-        class="flex gap-2.5 items-center mt-5 mr-0 mb-0 ml-16 text-2xl text-red-800 max-sm:ml-5 max-sm:text-lg"
-      >
+      <nav>
         <span>Home</span>
-        <img
-          src="https://cdn.builder.io/api/v1/image/assets/TEMP/005e5fcf89ecc9bd4745de82a2d5e59ac089e88a"
-          class="h-[26px] w-[26px]"
-          alt="Arrow"
-        />
+        <img src="arrow.png" alt="Arrow" />
         <span>Countries</span>
       </nav>
 
-      <main class="px-16 py-10 max-md:p-5">
-        <h1 class="mb-16 text-6xl text-red-800 max-md:text-5xl max-sm:text-4xl">
-          Countries & Destinations
-        </h1>
-
-        <section class="mb-20">
-          <h2
-            class="mb-5 text-4xl text-center text-red-800 max-md:text-3xl max-sm:text-2xl"
-          >
-            SAUDI ARABIA
-          </h2>
-          <div
-            class="flex justify-around p-10 rounded-3xl bg-red-900 bg-opacity-90 max-md:flex-col max-md:gap-5 max-md:items-center"
-          >
-            <article
-              class="flex flex-col items-center p-5 bg-stone-400 h-[521px] rounded-[45px] w-[369px] max-md:w-4/5 max-md:h-auto max-sm:w-[90%]"
-            >
-              <div class="flex justify-center items-center h-[400px]">
-                <img
-                  src="https://cdn.builder.io/api/v1/image/assets/TEMP/55633fbed3e526382d8ce3150ae2b5799f21ff9e"
-                  class="object-cover max-w-full max-h-full rounded-3xl"
-                  alt="Riyadh"
-                />
-              </div>
-              <h3 class="mt-auto text-4xl text-black max-sm:text-2xl">
-                Riyadh
-              </h3>
-            </article>
-            <article
-              class="flex flex-col items-center p-5 bg-stone-400 h-[521px] rounded-[45px] w-[369px] max-md:w-4/5 max-md:h-auto max-sm:w-[90%]"
-            >
-              <div class="flex justify-center items-center h-[400px]">
-                <img
-                  src="https://cdn.builder.io/api/v1/image/assets/TEMP/f5a49f9c0d433661e5d90edeb80a80f82dd825cd"
-                  class="object-cover max-w-full max-h-full rounded-3xl"
-                  alt="Jeddah"
-                />
-              </div>
-              <h3 class="mt-auto text-4xl text-black max-sm:text-2xl">
-                Jeddah
-              </h3>
-            </article>
-            <article
-              class="flex flex-col items-center p-5 bg-stone-400 h-[521px] rounded-[45px] w-[369px] max-md:w-4/5 max-md:h-auto max-sm:w-[90%]"
-            >
-              <div class="flex justify-center items-center h-[400px]">
-                <img
-                  src="https://cdn.builder.io/api/v1/image/assets/TEMP/09f1103a448d04c8929f3cf785ed8bfdb8a89a36"
-                  class="object-cover max-w-full max-h-full rounded-3xl"
-                  alt="Al-Ula"
-                />
-              </div>
-              <h3 class="mt-auto text-4xl text-black max-sm:text-2xl">
-                Al-Ula
-              </h3>
-            </article>
-          </div>
-        </section>
-
-        <section class="mb-20">
-          <h2
-            class="mb-5 text-4xl text-center text-red-800 max-md:text-3xl max-sm:text-2xl"
-          >
-            UNITED ARAB EMARITES
-          </h2>
-          <div
-            class="flex justify-around p-10 rounded-3xl bg-red-900 bg-opacity-90 max-md:flex-col max-md:gap-5 max-md:items-center"
-          >
-            <article
-              class="flex flex-col items-center p-5 bg-stone-400 h-[521px] rounded-[45px] w-[369px] max-md:w-4/5 max-md:h-auto max-sm:w-[90%]"
-            >
-              <div class="flex justify-center items-center h-[400px]">
-                <img
-                  src="https://cdn.builder.io/api/v1/image/assets/TEMP/c400f41e6d779ddd2907c7243ee23f54336435b5"
-                  class="object-cover max-w-full max-h-full rounded-3xl"
-                  alt="Dubai"
-                />
-              </div>
-              <h3 class="mt-auto text-4xl text-black max-sm:text-2xl">Dubai</h3>
-            </article>
-            <article
-              class="flex flex-col items-center p-5 bg-stone-400 h-[521px] rounded-[45px] w-[369px] max-md:w-4/5 max-md:h-auto max-sm:w-[90%]"
-            >
-              <div class="flex justify-center items-center h-[400px]">
-                <img
-                  src="https://cdn.builder.io/api/v1/image/assets/TEMP/6e1ddba02f0fd7c39e4acc1616323475462678f9"
-                  class="object-cover max-w-full max-h-full rounded-3xl"
-                  alt="Abu Dhabi"
-                />
-              </div>
-              <h3 class="mt-auto text-4xl text-black max-sm:text-2xl">
-                Abu Dhabi
-              </h3>
-            </article>
-            <article
-              class="flex flex-col items-center p-5 bg-stone-400 h-[521px] rounded-[45px] w-[369px] max-md:w-4/5 max-md:h-auto max-sm:w-[90%]"
-            >
-              <div class="flex justify-center items-center h-[400px]">
-                <img
-                  src="https://cdn.builder.io/api/v1/image/assets/TEMP/cd56f5b2b6aa90d236afc9e7dffff922b61e1737"
-                  class="object-cover max-w-full max-h-full rounded-3xl"
-                  alt="Al-Sharjah"
-                />
-              </div>
-              <h3 class="mt-auto text-4xl text-black max-sm:text-2xl">
-                Al-Sharjah
-              </h3>
-            </article>
-          </div>
-        </section>
-
-        <section class="mb-20">
-          <h2
-            class="mb-5 text-4xl text-center text-red-800 max-md:text-3xl max-sm:text-2xl"
-          >
-            QATAR
-          </h2>
-          <div
-            class="flex justify-around p-10 rounded-3xl bg-red-900 bg-opacity-90 max-md:flex-col max-md:gap-5 max-md:items-center"
-          >
-            <article
-              class="flex flex-col items-center p-5 bg-stone-400 h-[521px] rounded-[45px] w-[369px] max-md:w-4/5 max-md:h-auto max-sm:w-[90%]"
-            >
-              <div class="flex justify-center items-center h-[400px]">
-                <img
-                  src="https://cdn.builder.io/api/v1/image/assets/TEMP/efb09d77b9d947d17a6a40fab3a30a05c86d54d9"
-                  class="object-cover max-w-full max-h-full rounded-3xl"
-                  alt="Doha"
-                />
-              </div>
-              <h3 class="mt-auto text-4xl text-black max-sm:text-2xl">Doha</h3>
-            </article>
+      <main>
+        <h1>Countries & Destinations</h1>
+        <section>
+          <h2>SAUDI ARABIA</h2>
+          <div class="cards-container">
+            <div class="card">
+              <img src="riyadh.png" alt="Riyadh" />
+              <h3>Riyadh</h3>
+            </div>
+            <div class="card">
+              <img src="jeddah.png" alt="Jeddah" />
+              <h3>Jeddah</h3>
+            </div>
+            <div class="card">
+              <img src="alula.png" alt="Al-Ula" />
+              <h3>Al-Ula</h3>
+            </div>
           </div>
         </section>
       </main>
