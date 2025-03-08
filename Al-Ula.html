@@ -11,56 +11,62 @@
             padding: 0;
             background-color: #fffaf1;
         }
-        .site-header {
+                .header, .footer {
             background-color: #7C1F1B;
-            color: white;
-            padding: 15px 30px;
+            padding: 20px;
             display: flex;
             justify-content: space-between;
             align-items: center;
             border-radius: 0 0 30px 30px;
+            box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
         }
-        .logo-container img {
-            height: 50px;
+        .footer {
+            padding: 10px;
+            border-radius: 30px 30px 0 0;
+            flex-direction: column;
+            text-align: center;
+            margin-top: 10px;
+        }
+        .footer-links {
+            display: flex;
+            gap: 20px;
+            margin-top: 10px;
+        }
+        .footer-links a {
+            color: #CBB696;
+            text-decoration: none;
+            transition: color 0.3s ease;
+            font-size: 14px;
+        }
+        .footer-links a:hover {
+            color: #ae9c80;
+        }
+        .footer p {
+            color: #CBB696;
+            margin-top: 3px;
+            font-size: 12px;
+        }
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .nav-icon {
+            width: 50px;
+            transition: transform 0.3s ease;
+        }
+        .nav-icon:hover {
+            transform: scale(1.1);
         }
         .breadcrumb-nav {
-            margin: 20px;
-            font-size: 18px;
-            color: #9E1A1A;
-            text-align: center;
-        }
-        .hero-section {
-            position: relative;
-            width: 100%;
-            overflow: hidden;
-        }
-        .carousel {
             display: flex;
-            transition: transform 0.5s ease-in-out;
+            align-items: center;
+            padding: 10px 20px;
+            font-size: 18px;
+            color: #7C1F1B;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+            font-weight: bold;
         }
-        .carousel img {
-            width: 100%;
-            height: auto;
-            border-radius: 10px;
-        }
-        .carousel-container {
-            position: relative;
-            max-width: 100%;
-            overflow: hidden;
-        }
-        .prev, .next {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            background-color: rgba(0, 0, 0, 0.5);
-            color: white;
-            border: none;
-            padding: 10px;
-            cursor: pointer;
-            border-radius: 50%;
-        }
-        .prev { left: 10px; }
-        .next { right: 10px; }
         .category-grid {
             display: flex;
             flex-wrap: wrap;
@@ -76,82 +82,170 @@
             padding: 10px;
             border-radius: 10px;
             text-align: center;
-            width: 200px;
+            width: 220px;
             position: relative;
+            transition: transform 0.3s ease-in-out;
+        }
+        .category-card:hover {
+            transform: scale(1.1);
         }
         .category-card img {
             width: 100%;
-            height: auto;
+            height: 200px;
+            object-fit: cover;
             border-radius: 10px;
         }
         .heart-box {
-            position: relative;
-            margin: auto;
-            width: 30px;
-            height: 30px;
-            background-color: white;
+            width: 40px;
+            height: 40px;
+            background-color: #cbb696;
             border-radius: 5px;
             display: flex;
             align-items: center;
             justify-content: center;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+            margin: auto;
             margin-top: 5px;
         }
-        .site-footer {
-            background-color: #7C1F1B;
-            color: white;
-            text-align: center;
-            padding: 15px;
-            margin-top: 30px;
-            border-radius: 30px 30px 0 0;
+        .heart-box img {
+            width: 24px;
+            height: 24px;
         }
+    
+         .carousel-container {
+            position: relative;
+            width: 100%;
+            height:900px;
+            overflow: hidden;
+            border-radius: 15px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .carousel {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+        }
+        .carousel img {
+            width: auto;
+            max-width: 100%;
+            height: 100%;
+            object-fit: contain;
+            display: none;
+            border-radius: 15px;
+        }
+        .carousel img.active {
+            display: block;
+        }
+        .prev, .next {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: rgba(0, 0, 0, 0.5);
+            color: white;
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+            border-radius: 50%;
+            font-size: 24px;
+        }
+        .prev { left: 15px; }
+        .next { right: 15px; }
+        .about-section {
+            padding: 20px;
+            text-align: center;
+        }
+        .about-section h2 {
+            color: #7C1F1B;
+        }
+        .about-section p {
+            font-size: 18px;
+            color: #333;
+            max-width: 800px;
+            margin: auto;
+        }
+        
+        .category-title {
+            font-size: 24px;
+            color: #7C1F1B;
+            padding: 10px;
+            border-radius: 10px;
+            text-align: left;
+            margin: 20px;
+            text-indent: 20px;
+        }
+  
     </style>
 </head>
 <body>
-    <header class="site-header">
+    <header class="header">
         <div class="logo-container">
-            <img src="logo1.png" alt="Primary Logo">
-            <img src="logo2.png" alt="Secondary Logo">
+            <a href="home.html">
+            <img src="images/logo.png" alt="Logo" class="nav-icon"></a>
+            <a href="favorites.html">
+            <img src="images/heart.png" alt="Heart" class="nav-icon"></a>
         </div>
-        <img src="user-icon.png" alt="User Icon">
+        <a href="profile.html">
+        <img src="images/profile_color.png" alt="Profile" class="nav-icon"></a>
     </header>
-    <nav class="breadcrumb-nav">Home > Countries > Al-Ula</nav>
-    <section class="hero-section">
-        <div class="carousel-container">
-            <div class="carousel" id="carousel">
-                <img src="images/landscape1.jpg" alt="Al-Ula Landscape 1">
-                <img src="images/landscape2.webp" alt="Al-Ula Landscape 2">
-                <img src="images/landscape3.webp" alt="Al-Ula Landscape 3">
-                <img src="images/landscape4.jpg" alt="Al-Ula Landscape 4">
-                <img src="images/landscape5.jpg" alt="Al-Ula Landscape 5">
-            </div>
-            <button class="prev" onclick="moveSlide(-1)">&#10094;</button>
-            <button class="next" onclick="moveSlide(1)">&#10095;</button>
+    <nav class="breadcrumb-nav">
+        <span><a href="Bawhome.html" style="text-decoration: none; color: #7C1F1B;">Home</a> &gt; <a href="Countries.html" style="text-decoration: none; color: #7C1F1B;">Countries</a> &gt; <a href="Al-Ula.html" style="text-decoration: none; color: #7C1F1B;">Al-Ula</a></span>
+    </nav>
+  
+    <section class="carousel-container">
+        <div class="carousel" id="carousel">
+            <img src="images/landscape1.jpg" alt="Al-Ula 1" class="active">
+            <img src="images/landscape2.webp" alt="Al-Ula 2">
+            <img src="images/landscape5.jpg" alt="Al-Ula 3">
         </div>
+        <button class="prev" onclick="moveSlide(-1)">&#10094;</button>
+        <button class="next" onclick="moveSlide(1)">&#10095;</button>
     </section>
-    <h3 class="section-title">Accommodations</h3>
+    <section class="about-section">
+        <h2>About Al-Ula</h2>
+        <p>AlUla stands with two other great oases in northwest Arabia - Khaybar and Tayma - to create a place of profound history that is continuously evolving. Its strategic position has, throughout millenia, made it a crucial hub for trade, and its distinct geographical features, such as the famed oasis and imposing sandstone mountains, combined with its favourable climate, allowed numerous civilisations to thrive. Those who visit now embark on an authentic journey, travelling back in time, surrounded by wonders and a sense of discovery.</p>
+    </section>
+    <h3 class="category-title">Accommodations</h3>
     <div class="category-grid">
         <div class="category-card"><img src="images/camp.webp" alt="Self-Camping"><p>Self-Camping</p><div class="heart-box"><img src="images/fav.png" alt="Favorite"></div></div>
         <div class="category-card"><img src="images/ashar.webp" alt="Ashar Tented Resort"><p>Ashar Tented Resort</p><div class="heart-box"><img src="images/fav.png" alt="Favorite"></div></div>
         <div class="category-card"><img src="images/banyan.webp" alt="Banyan Tree AlUla"><p>Banyan Tree AlUla</p><div class="heart-box"><img src="images/fav.png" alt="Favorite"></div></div>
         <div class="category-card"><img src="images/caravan.webp" alt="Caravan by Habitas"><p>Caravan by Habitas</p><div class="heart-box"><img src="images/fav.png" alt="Favorite"></div></div>
     </div>
-    <h3 class="section-title">Cafés & Restaurants</h3>
+    <h3 class="category-title">Cafés & Restaurants</h3>
     <div class="category-grid">
         <div class="category-card"><img src="images/saffron.webp" alt="Saffron"><p>Saffron</p><div class="heart-box"><img src="images/fav.png" alt="Favorite"></div></div>
         <div class="category-card"><img src="images/tama.webp" alt="Tama"><p>Tama</p><div class="heart-box"><img src="images/fav.png" alt="Favorite"></div></div>
         <div class="category-card"><img src="images/maqha.webp" alt="Maqqa Cafe"><p>Maqqa Cafe</p><div class="heart-box"><img src="images/fav.png" alt="Favorite"></div></div>
         <div class="category-card"><img src="images/charcood.webp" alt="Charcood"><p>Charcood</p><div class="heart-box"><img src="images/fav.png" alt="Favorite"></div></div>
     </div>
-    <h3 class="section-title">Adventures</h3>
+    <h3 class="category-title">Adventures</h3>
     <div class="category-grid">
         <div class="category-card"><img src="images/old-town.webp" alt="Old Town"><p>Old Town</p><div class="heart-box"><img src="images/fav.png" alt="Favorite"></div></div>
         <div class="category-card"><img src="images/harrat.webp" alt="Harrat Viewpoint"><p>Harrat Viewpoint</p><div class="heart-box"><img src="images/fav.png" alt="Favorite"></div></div>
         <div class="category-card"><img src="images/dandan.webp" alt="Dandan Culinary Arts Center"><p>Dandan Culinary Arts Center</p><div class="heart-box"><img src="images/fav.png" alt="Favorite"></div></div>
         <div class="category-card"><img src="images/al-ula.jpg" alt="Elephant Rock"><p>Elephant Rock</p><div class="heart-box"><img src="images/fav.png" alt="Favorite"></div></div>
     </div>
-    <footer class="site-footer">
-        <p>&copy; 2025 Al-Ula Tourism. All rights reserved.</p>
+    <footer class="footer">
+        <div class="footer-links">
+            <a href="about.html">About Us</a>
+            <a href="contact.html">Contact</a>
+            <a href="privacy.html">Privacy Policy</a>
+            <a href="terms.html">Terms of Service</a>
+        </div>
+        <p>&copy; 2025 Bawsalah All rights reserved.</p>
     </footer>
+    <script>
+
+        let index = 0;
+        const images = document.querySelectorAll('.carousel img');
+        
+        function moveSlide(step) {
+            images[index].classList.remove('active');
+            index = (index + step + images.length) % images.length;
+            images[index].classList.add('active');
+        }
+    </script>
 </body>
 </html>
+
+
