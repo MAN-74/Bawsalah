@@ -52,8 +52,9 @@
   margin-top: 3px;
   font-size: 12px;
 }
-  /* Main container */
-  .landing-container {
+
+/* Main container */
+.landing-container {
     min-height: 100vh;
     display: flex;
     flex-direction: column;
@@ -62,7 +63,7 @@
     justify-content: center;
     position: relative;
     overflow: hidden;
-  }
+}
   
   /* Content wrapper */
   .content-wrapper {
