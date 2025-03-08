@@ -1,44 +1,123 @@
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Countries</title>
-    <link rel="stylesheet" href="styles.css">
-  </head>
-  <body>
-    <div>
-      <header>
-        <img src="logo.png" alt="Logo" />
-        <img src="heart.png" alt="Heart" />
-        <img src="profile.png" alt="Profile" />
-      </header>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Countries & Destinations</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #fffaf1;
+            text-align: center;
+        }
+        .site-header {
+            background-color: #7C1F1B;
+            color: white;
+            padding: 15px 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-radius: 0 0 30px 30px;
+        }
+        .breadcrumb-nav {
+            margin: 20px;
+            font-size: 18px;
+            color: #9E1A1A;
+        }
+        .title {
+            font-size: 32px;
+            color: #9E1A1A;
+            margin-bottom: 20px;
+        }
+        .country-section {
+            margin: 20px auto;
+            max-width: 1000px;
+        }
+        .country-title {
+            font-size: 24px;
+            color: #9E1A1A;
+            margin-bottom: 10px;
+        }
+        .cards-container {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            background-color: rgba(124, 31, 27, 0.95);
+            padding: 20px;
+            border-radius: 15px;
+            flex-wrap: wrap;
+        }
+        .card {
+            background-color: #cbb696;
+            border-radius: 15px;
+            padding: 10px;
+            width: 200px;
+            text-align: center;
+        }
+        .card img {
+            width: 100%;
+            border-radius: 10px;
+        }
+        .card-title {
+            font-size: 18px;
+            color: black;
+            margin-top: 5px;
+        }
+    </style>
+</head>
+<body>
+    <header class="site-header">
+        <span>Countries full</span>
+    </header>
+    <nav class="breadcrumb-nav">Home > Countries</nav>
+    <h1 class="title">Countries & Destinations</h1>
 
-      <nav>
-        <span>Home</span>
-        <img src="arrow.png" alt="Arrow" />
-        <span>Countries</span>
-      </nav>
+    <section class="country-section">
+        <h2 class="country-title">SAUDI ARABIA</h2>
+        <div class="cards-container">
+            <div class="card"><img src="riyadh.jpg" alt="Riyadh"><h3 class="card-title">Riyadh</h3></div>
+            <div class="card"><img src="jeddah.jpg" alt="Jeddah"><h3 class="card-title">Jeddah</h3></div>
+            <div class="card"><img src="alula.jpg" alt="Al-Ula"><h3 class="card-title">Al-Ula</h3></div>
+        </div>
+    </section>
 
-      <main>
-        <h1>Countries & Destinations</h1>
-        <section>
-          <h2>SAUDI ARABIA</h2>
-          <div class="cards-container">
-            <div class="card">
-              <img src="riyadh.png" alt="Riyadh" />
-              <h3>Riyadh</h3>
-            </div>
-            <div class="card">
-              <img src="jeddah.png" alt="Jeddah" />
-              <h3>Jeddah</h3>
-            </div>
-            <div class="card">
-              <img src="alula.png" alt="Al-Ula" />
-              <h3>Al-Ula</h3>
-            </div>
-          </div>
-        </section>
-      </main>
-    </div>
-  </body>
+    <section class="country-section">
+        <h2 class="country-title">UNITED ARAB EMIRATES</h2>
+        <div class="cards-container">
+            <div class="card"><img src="dubai.jpg" alt="Dubai"><h3 class="card-title">Dubai</h3></div>
+            <div class="card"><img src="abu-dhabi.jpg" alt="Abu Dhabi"><h3 class="card-title">Abu Dhabi</h3></div>
+            <div class="card"><img src="sharjah.jpg" alt="Al-Sharjah"><h3 class="card-title">Al-Sharjah</h3></div>
+        </div>
+    </section>
+
+    <section class="country-section">
+        <h2 class="country-title">QATAR</h2>
+        <div class="cards-container">
+            <div class="card"><img src="doha.jpg" alt="Doha"><h3 class="card-title">Doha</h3></div>
+        </div>
+    </section>
+
+    <section class="country-section">
+        <h2 class="country-title">OMAN</h2>
+        <div class="cards-container">
+            <div class="card"><img src="salalah.jpg" alt="Salalah"><h3 class="card-title">Salalah</h3></div>
+        </div>
+    </section>
+
+    <section class="country-section">
+        <h2 class="country-title">BAHRAIN</h2>
+        <div class="cards-container">
+            <div class="card"><img src="bahrain.jpg" alt="Bahrain"><h3 class="card-title">Bahrain</h3></div>
+        </div>
+    </section>
+
+    <section class="country-section">
+        <h2 class="country-title">KUWAIT</h2>
+        <div class="cards-container">
+            <div class="card"><img src="kuwait.jpg" alt="Kuwait"><h3 class="card-title">Kuwait</h3></div>
+        </div>
+    </section>
+</body>
 </html>
