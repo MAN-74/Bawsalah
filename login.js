@@ -8,12 +8,12 @@ document.addEventListener("DOMContentLoaded", function () {
       const email = document.getElementById("email").value;
       const password = document.getElementById("password").value;
   
-      // Simulated user credentials (authentication logic)
-      const validEmail = "user@example.com";
-      const validPassword = "Pass1234";
-  
-      if (email === validEmail && password === validPassword) {
-        localStorage.setItem("loggedIn", "true"); // Store login state
+     // Retrieve stored user credentials
+       const storedEmail = localStorage.getItem("userEmail");
+       const storedPassword = localStorage.getItem("userPassword");
+      
+       if (email === storedEmail && password === storedPassword) {
+        localStorage.setItem("loggedIn", "true"); // Keep the user logged in
         window.location.href = "Bawhome.html"; 
       } else {
         errorMessage.style.display = "block"; // Show error message

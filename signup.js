@@ -61,6 +61,12 @@ function validateForm(event) {
     }
 
     if (!error) {
+        //Store user credentials (not secure for production; use backend for real apps)
+        localStorage.setItem("userEmail", email);
+        localStorage.setItem("userPassword", password);
+        
+        alert("Signup successful! You can now log in.");
         window.location.href = 'login.html';
     }
+
 }
