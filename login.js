@@ -10,7 +10,7 @@ document.addEventListener("DOMContentLoaded", function () {
   
       // Simulated user credentials (authentication logic)
       const validEmail = "user@example.com";
-      const validPassword = "password123";
+      const validPassword = "Pass1234";
   
       if (email === validEmail && password === validPassword) {
         localStorage.setItem("loggedIn", "true"); // Store login state

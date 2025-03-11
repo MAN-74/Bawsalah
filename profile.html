@@ -112,7 +112,7 @@
             display: block;
             margin-bottom: 10px;
         }
-        .memory-btn {
+        .memory-btn, .logout-btn{
             background-color: #CBB696;
             color: #7C1F1B;
             padding: 6px 12px;
@@ -124,7 +124,11 @@
             margin-top: 10px;
             transition: background-color 0.3s ease;
         }
-        .memory-btn:hover {
+        .logout-btn{
+            padding: 6px 26px;  
+        }
+
+        .memory-btn:hover, .logout-btn:hover {
             background-color: #b0a084;
             box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
             transition: transform 0.3s ease;
@@ -196,6 +200,7 @@
         <div class="memory-section">
             <img src="images/profile_color.png" alt="Profile Image" class="memory-placeholder">
             <button class="memory-btn" onclick="window.location.href='memory.html';">Your Memory</button>
+            <button class="logout-btn" onclick="logoutUser()">Log Out</button>
         </div>
         <div class="form-section">
             <form>
@@ -215,5 +220,11 @@
         </div>
     </section>
     </div>
+    <script>
+        function logoutUser() {
+            localStorage.removeItem("loggedIn"); // Clear login state
+            window.location.href = "main.html"; // Redirect to login page
+        }
+      </script>      
 </body>
 </html>
