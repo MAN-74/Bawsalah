@@ -1,17 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Al-Ula Full</title>
     <style>
         body {
-            font-family:  'Chenla', sans-serif;
+            font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
             background-color: #fffaf1;
         }
-                .header, .footer {
+
+        .header,
+        .footer {
             background-color: #7C1F1B;
             padding: 20px;
             display: flex;
@@ -20,6 +23,7 @@
             border-radius: 0 0 30px 30px;
             box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
         }
+
         .footer {
             padding: 10px;
             border-radius: 30px 30px 0 0;
@@ -27,37 +31,45 @@
             text-align: center;
             margin-top: 10px;
         }
+
         .footer-links {
             display: flex;
             gap: 20px;
             margin-top: 10px;
         }
+
         .footer-links a {
             color: #CBB696;
             text-decoration: none;
             transition: color 0.3s ease;
             font-size: 14px;
         }
+
         .footer-links a:hover {
             color: #ae9c80;
         }
+
         .footer p {
             color: #CBB696;
             margin-top: 3px;
             font-size: 12px;
         }
+
         .logo-container {
             display: flex;
             align-items: center;
             gap: 10px;
         }
+
         .nav-icon {
             width: 50px;
             transition: transform 0.3s ease;
         }
+
         .nav-icon:hover {
             transform: scale(1.1);
         }
+
         .breadcrumb-nav {
             display: flex;
             align-items: center;
@@ -66,13 +78,6 @@
             color: #7C1F1B;
             text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
             font-weight: bold;
-        }
-
-        .divider {
-            flex-grow: 1;
-            height: 2px;
-            background-color: #9E1A1A;
-            margin-left: 10px;
         }
 
         .category-grid {
@@ -85,6 +90,7 @@
             border-radius: 20px;
             margin: 20px;
         }
+
         .category-card {
             background-color: #cbb696;
             padding: 10px;
@@ -94,45 +100,61 @@
             position: relative;
             transition: transform 0.3s ease-in-out;
         }
+
         .category-card:hover {
             transform: scale(1.1);
         }
+
         .category-card img {
             width: 100%;
             height: 200px;
             object-fit: cover;
             border-radius: 10px;
         }
-        .heart-box {
-            width: 40px;
-            height: 40px;
-            background-color: #cbb696;
-            border-radius: 5px;
+
+        .favorite-container {
             display: flex;
             align-items: center;
             justify-content: center;
-            margin: auto;
             margin-top: 5px;
+            cursor: pointer;
         }
+
+        .heart-box {
+            width: 24px;
+            height: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 5px;
+        }
+
         .heart-box img {
             width: 24px;
             height: 24px;
         }
-    
-         .carousel-container {
+
+        .favorite-text {
+            font-size: 14px;
+            color: #7C1F1B;
+        }
+
+        .carousel-container {
             position: relative;
             width: 100%;
-            height:900px;
+            height: 900px;
             overflow: hidden;
             border-radius: 15px;
             display: flex;
             justify-content: center;
             align-items: center;
         }
+
         .carousel {
             display: flex;
             transition: transform 0.5s ease-in-out;
         }
+
         .carousel img {
             width: auto;
             max-width: 100%;
@@ -141,10 +163,13 @@
             display: none;
             border-radius: 15px;
         }
+
         .carousel img.active {
             display: block;
         }
-        .prev, .next {
+
+        .prev,
+        .next {
             position: absolute;
             top: 50%;
             transform: translateY(-50%);
@@ -156,22 +181,31 @@
             border-radius: 50%;
             font-size: 24px;
         }
-        .prev { left: 15px; }
-        .next { right: 15px; }
+
+        .prev {
+            left: 15px;
+        }
+
+        .next {
+            right: 15px;
+        }
+
         .about-section {
             padding: 20px;
             text-align: center;
         }
+
         .about-section h2 {
             color: #7C1F1B;
         }
+
         .about-section p {
             font-size: 18px;
             color: #333;
             max-width: 800px;
             margin: auto;
         }
-        
+
         .category-title {
             font-size: 24px;
             color: #7C1F1B;
@@ -181,25 +215,26 @@
             margin: 20px;
             text-indent: 20px;
         }
-  
     </style>
 </head>
+
 <body>
     <header class="header">
         <div class="logo-container">
-            <a href="Bawhome.html">
-            <img src="images/logo.png" alt="Logo" class="nav-icon"></a>
+            <a href="home.html">
+                <img src="images/logo.png" alt="Logo" class="nav-icon"></a>
             <a href="favorites.html">
-            <img src="images/heart.png" alt="Heart" class="nav-icon"></a>
+                <img src="images/heart.png" alt="Heart" class="nav-icon"></a>
         </div>
         <a href="profile.html">
-        <img src="images/profile_color.png" alt="Profile" class="nav-icon"></a>
+            <img src="images/profile_color.png" alt="Profile" class="nav-icon"></a>
     </header>
     <nav class="breadcrumb-nav">
-        <span><a href="Bawhome.html" style="text-decoration: none; color: #7C1F1B;">Home</a> &gt; <a href="Countries.html" style="text-decoration: none; color: #7C1F1B;">Countries</a> &gt; <a href="Al-Ula.html" style="text-decoration: none; color: #7C1F1B;">Al-Ula</a></span>
-        <div class="divider"></div>
+        <span><a href="Bawhome.html" style="text-decoration: none; color: #7C1F1B;">Home</a> &gt; <a
+                href="Countries.html" style="text-decoration: none; color: #7C1F1B;">Countries</a> &gt; <a
+                href="Al-Ula.html" style="text-decoration: none; color: #7C1F1B;">Al-Ula</a></span>
     </nav>
-  
+
     <section class="carousel-container">
         <div class="carousel" id="carousel">
             <img src="images/landscape1.jpg" alt="Al-Ula 1" class="active">
@@ -211,28 +246,117 @@
     </section>
     <section class="about-section">
         <h2>About Al-Ula</h2>
-        <p>AlUla stands with two other great oases in northwest Arabia - Khaybar and Tayma - to create a place of profound history that is continuously evolving. Its strategic position has, throughout millenia, made it a crucial hub for trade, and its distinct geographical features, such as the famed oasis and imposing sandstone mountains, combined with its favourable climate, allowed numerous civilisations to thrive. Those who visit now embark on an authentic journey, travelling back in time, surrounded by wonders and a sense of discovery.</p>
+        <p>AlUla stands with two other great oases in northwest Arabia - Khaybar and Tayma - to create a place of
+            profound history that is continuously evolving. Its strategic position has, throughout millenia, made it a
+            crucial hub for trade, and its distinct geographical features, such as the famed oasis and imposing
+            sandstone mountains, combined with its favourable climate, allowed numerous civilisations to thrive. Those
+            who visit now embark on an authentic journey, travelling back in time, surrounded by wonders and a sense of
+            discovery.</p>
     </section>
     <h3 class="category-title">Accommodations</h3>
-    <div class="category-grid">
-        <div class="category-card"><img src="images/camp.webp" alt="Self-Camping"><p>Self-Camping</p><div class="heart-box"><img src="images/fav.png" alt="Favorite"></div></div>
-        <div class="category-card"><img src="images/ashar.webp" alt="Ashar Tented Resort"><p>Ashar Tented Resort</p><div class="heart-box"><img src="images/fav.png" alt="Favorite"></div></div>
-        <div class="category-card"><img src="images/banyan.webp" alt="Banyan Tree AlUla"><p>Banyan Tree AlUla</p><div class="heart-box"><img src="images/fav.png" alt="Favorite"></div></div>
-        <div class="category-card"><img src="images/caravan.webp" alt="Caravan by Habitas"><p>Caravan by Habitas</p><div class="heart-box"><img src="images/fav.png" alt="Favorite"></div></div>
+    <div class="category-grid" id="accommodations-grid">
+        <div class="category-card" data-name="Self-Camping" data-category="accommodations">
+            <img src="images/camp.webp" alt="Self-Camping">
+            <p>Self-Camping</p>
+            <div class="favorite-container" onclick="toggleFavorite(this, 'accommodations')">
+                <div class="heart-box"><img src="images/fav.png" alt="Favorite"></div>
+                <span class="favorite-text">Add to favorites</span>
+            </div>
+        </div>
+        <div class="category-card" data-name="Ashar Tented Resort" data-category="accommodations">
+            <img src="images/ashar.webp" alt="Ashar Tented Resort">
+            <p>Ashar Tented Resort</p>
+            <div class="favorite-container" onclick="toggleFavorite(this, 'accommodations')">
+                <div class="heart-box"><img src="images/fav.png" alt="Favorite"></div>
+                <span class="favorite-text">Add to favorites</span>
+            </div>
+        </div>
+        <div class="category-card" data-name="Banyan Tree AlUla" data-category="accommodations">
+            <img src="images/banyan.webp" alt="Banyan Tree AlUla">
+            <p>Banyan Tree AlUla</p>
+            <div class="favorite-container" onclick="toggleFavorite(this, 'accommodations')">
+                <div class="heart-box"><img src="images/fav.png" alt="Favorite"></div>
+                <span class="favorite-text">Add to favorites</span>
+            </div>
+        </div>
+        <div class="category-card" data-name="Caravan by Habitas" data-category="accommodations">
+            <img src="images/caravan.webp" alt="Caravan by Habitas">
+            <p>Caravan by Habitas</p>
+            <div class="favorite-container" onclick="toggleFavorite(this, 'accommodations')">
+                <div class="heart-box"><img src="images/fav.png" alt="Favorite"></div>
+                <span class="favorite-text">Add to favorites</span>
+            </div>
+        </div>
     </div>
     <h3 class="category-title">Cafés & Restaurants</h3>
-    <div class="category-grid">
-        <div class="category-card"><img src="images/saffron.webp" alt="Saffron"><p>Saffron</p><div class="heart-box"><img src="images/fav.png" alt="Favorite"></div></div>
-        <div class="category-card"><img src="images/tama.webp" alt="Tama"><p>Tama</p><div class="heart-box"><img src="images/fav.png" alt="Favorite"></div></div>
-        <div class="category-card"><img src="images/maqha.webp" alt="Maqqa Cafe"><p>Maqqa Cafe</p><div class="heart-box"><img src="images/fav.png" alt="Favorite"></div></div>
-        <div class="category-card"><img src="images/charcood.webp" alt="Charcood"><p>Charcood</p><div class="heart-box"><img src="images/fav.png" alt="Favorite"></div></div>
+    <div class="category-grid" id="cafes-grid">
+        <div class="category-card" data-name="Saffron" data-category="cafes">
+            <img src="images/saffron.webp" alt="Saffron">
+            <p>Saffron</p>
+            <div class="favorite-container" onclick="toggleFavorite(this, 'cafes')">
+                <div class="heart-box"><img src="images/fav.png" alt="Favorite"></div>
+                <span class="favorite-text">Add to favorites</span>
+            </div>
+        </div>
+        <div class="category-card" data-name="Tama" data-category="cafes">
+            <img src="images/tama.webp" alt="Tama">
+            <p>Tama</p>
+            <div class="favorite-container" onclick="toggleFavorite(this, 'cafes')">
+                <div class="heart-box"><img src="images/fav.png" alt="Favorite"></div>
+                <span class="favorite-text">Add to favorites</span>
+            </div>
+        </div>
+        <div class="category-card" data-name="Maqqa Cafe" data-category="cafes">
+            <img src="images/maqha.webp" alt="Maqqa Cafe">
+            <p>Maqqa Cafe</p>
+            <div class="favorite-container" onclick="toggleFavorite(this, 'cafes')">
+                <div class="heart-box"><img src="images/fav.png" alt="Favorite"></div>
+                <span class="favorite-text">Add to favorites</span>
+            </div>
+        </div>
+        <div class="category-card" data-name="Charcood" data-category="cafes">
+            <img src="images/charcood.webp" alt="Charcood">
+            <p>Charcood</p>
+            <div class="favorite-container" onclick="toggleFavorite(this, 'cafes')">
+                <div class="heart-box"><img src="images/fav.png" alt="Favorite"></div>
+                <span class="favorite-text">Add to favorites</span>
+            </div>
+        </div>
     </div>
     <h3 class="category-title">Adventures</h3>
-    <div class="category-grid">
-        <div class="category-card"><img src="images/old-town.webp" alt="Old Town"><p>Old Town</p><div class="heart-box"><img src="images/fav.png" alt="Favorite"></div></div>
-        <div class="category-card"><img src="images/harrat.webp" alt="Harrat Viewpoint"><p>Harrat Viewpoint</p><div class="heart-box"><img src="images/fav.png" alt="Favorite"></div></div>
-        <div class="category-card"><img src="images/dandan.webp" alt="Dandan Culinary Arts Center"><p>Dandan Culinary Arts Center</p><div class="heart-box"><img src="images/fav.png" alt="Favorite"></div></div>
-        <div class="category-card"><img src="images/al-ula.jpg" alt="Elephant Rock"><p>Elephant Rock</p><div class="heart-box"><img src="images/fav.png" alt="Favorite"></div></div>
+    <div class="category-grid" id="adventures-grid">
+        <div class="category-card" data-name="Old Town" data-category="adventures">
+            <img src="images/old-town.webp" alt="Old Town">
+            <p>Old Town</p>
+            <div class="favorite-container" onclick="toggleFavorite(this, 'adventures')">
+                <div class="heart-box"><img src="images/fav.png" alt="Favorite"></div>
+                <span class="favorite-text">Add to favorites</span>
+            </div>
+        </div>
+        <div class="category-card" data-name="Harrat Viewpoint" data-category="adventures">
+            <img src="images/harrat.webp" alt="Harrat Viewpoint">
+            <p>Harrat Viewpoint</p>
+            <div class="favorite-container" onclick="toggleFavorite(this, 'adventures')">
+                <div class="heart-box"><img src="images/fav.png" alt="Favorite"></div>
+                <span class="favorite-text">Add to favorites</span>
+            </div>
+        </div>
+        <div class="category-card" data-name="Dandan Culinary Arts Center" data-category="adventures">
+            <img src="images/dandan.webp" alt="Dandan Culinary Arts Center">
+            <p>Dandan Culinary Arts Center</p>
+            <div class="favorite-container" onclick="toggleFavorite(this, 'adventures')">
+                <div class="heart-box"><img src="images/fav.png" alt="Favorite"></div>
+                <span class="favorite-text">Add to favorites</span>
+            </div>
+        </div>
+        <div class="category-card" data-name="Elephant Rock" data-category="adventures">
+            <img src="images/al-ula.jpg" alt="Elephant Rock">
+            <p>Elephant Rock</p>
+            <div class="favorite-container" onclick="toggleFavorite(this, 'adventures')">
+                <div class="heart-box"><img src="images/fav.png" alt="Favorite"></div>
+                <span class="favorite-text">Add to favorites</span>
+            </div>
+        </div>
     </div>
     <footer class="footer">
         <div class="footer-links">
@@ -244,17 +368,119 @@
         <p>&copy; 2025 Bawsalah All rights reserved.</p>
     </footer>
     <script>
-
+        // Carousel functionality
         let index = 0;
         const images = document.querySelectorAll('.carousel img');
-        
+
         function moveSlide(step) {
             images[index].classList.remove('active');
             index = (index + step + images.length) % images.length;
             images[index].classList.add('active');
         }
+
+        // Favorites functionality
+        document.addEventListener('DOMContentLoaded', function () {
+            // Initialize local storage if it doesn't exist
+            if (!localStorage.getItem('accommodationsFavorites')) {
+                localStorage.setItem('accommodationsFavorites', JSON.stringify([]));
+            }
+            if (!localStorage.getItem('cafesFavorites')) {
+                localStorage.setItem('cafesFavorites', JSON.stringify([]));
+            }
+            if (!localStorage.getItem('adventuresFavorites')) {
+                localStorage.setItem('adventuresFavorites', JSON.stringify([]));
+            }
+
+            // Load favorites state for all items
+            loadFavoritesState();
+        });
+
+        function toggleFavorite(element, category) {
+            const card = element.closest('.category-card');
+            const itemName = card.getAttribute('data-name');
+            const itemImage = card.querySelector('img').src.replace(window.location.origin + "/", "");
+            console.log(itemImage);
+            const heartImg = element.querySelector('.heart-box img');
+            const favoriteText = element.querySelector('.favorite-text');
+            const storageKey = category + 'Favorites';
+
+            // Get current favorites from local storage
+            let favorites = [];
+            try {
+                favorites = JSON.parse(localStorage.getItem(storageKey)) || [];
+            } catch (e) {
+                console.error("Error parsing favorites:", e);
+                favorites = [];
+            }
+
+            // Check if item is already in favorites (by name)
+            const index = favorites.findIndex(item => item.name === itemName);
+
+            if (index === -1) {
+                // Add to favorites
+                favorites.push({
+                    name: itemName,
+                    image: itemImage,
+                    category: category
+                });
+                heartImg.src = "images/heart-filled.png";
+                favoriteText.textContent = "Added to favorites";
+            } else {
+                // Remove from favorites
+                favorites.splice(index, 1);
+                heartImg.src = "images/fav.png";
+                favoriteText.textContent = "Add to favorites";
+            }
+
+            // Save updated favorites back to local storage
+            localStorage.setItem(storageKey, JSON.stringify(favorites));
+
+            // Debug: Log current favorites to console
+            console.log(storageKey + " after update:", JSON.parse(localStorage.getItem(storageKey)));
+        }
+
+        function loadFavoritesState() {
+            loadCategoryFavorites('accommodations');
+            loadCategoryFavorites('cafes');
+            loadCategoryFavorites('adventures');
+        }
+
+        function loadCategoryFavorites(category) {
+            const storageKey = category + 'Favorites';
+            let favorites = [];
+            try {
+                favorites = JSON.parse(localStorage.getItem(storageKey)) || [];
+            } catch (e) {
+                console.error("Error loading favorites:", e);
+                favorites = [];
+            }
+
+            // Debug: Log favorites on load
+            console.log(storageKey + " on load:", favorites);
+
+            // Find all cards in this category
+            const cards = document.querySelectorAll(`.category-card[data-category="${category}"]`);
+
+            cards.forEach(card => {
+                const itemName = card.getAttribute('data-name');
+                const heartImg = card.querySelector('.heart-box img');
+                const favoriteText = card.querySelector('.favorite-text');
+
+                // Check if this item is in favorites
+                const isFavorite = favorites.some(item => item.name === itemName);
+                if (isFavorite) {
+                    heartImg.src = "images/heart-filled.png";
+                    favoriteText.textContent = "Added to favorites";
+                } else {
+                    heartImg.src = "images/fav.png";
+                    favoriteText.textContent = "Add to favorites";
+                }
+            });
+        }
+
+
+
     </script>
 </body>
+
 </html>
-
-
