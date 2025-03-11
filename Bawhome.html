@@ -81,7 +81,7 @@
         border-radius: 10px;
         padding:10px;
         position: relative;
-        background-color: rgba(124, 31, 27, 0.95);
+        background-color:#cbb797;
       }
 
 
@@ -89,27 +89,30 @@
         display: flex;
         justify-content: center;
         margin-bottom: 40px;
+       
       }
 
       .search-bar {
         border-radius: 13px;
-        width: 380px;
+        
+        width: 370px;
         height: 26px;
         display: flex;
         align-items: center;
         padding: 0 15px;
-        background-color: #cbb797;
+        background-color:#fffaf1 ;
       }
 
       .search-input {
         background: transparent;
-        border: none;
+        border:0;
         flex: 1;
-        font-family: "Chenla", cursive;
+        font-family: 'Chenla', sans-serif;
         font-size: 11px;
-        color: rgba(0, 0, 0, 0.25);
+        color: #000;
         outline: none;
       }
+      
 
       .search-icon-container {
         width: 38px;
@@ -119,7 +122,7 @@
         align-items: center;
         justify-content: center;
         margin-left: 10px;
-        background-color: #cbb797;
+        background-color: #fffaf1;
       }
 
       .search-icon {
@@ -252,18 +255,34 @@
       
 
       .more-button {
-        width: 200px;
-        height: 50px;
-        border-radius: 1px;
-        margin: 0 auto;
-        font-family: 'Chenla', sans-serif;
-        font-size: 20px;
-        background-color: #cbb797;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        cursor: pointer;
-      }
+    background-color:  rgba(203, 182, 150, 0.991);
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border: none;
+    border-radius: 25px;
+    color:  #000;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+    font-size: 16px;
+    cursor: pointer;
+    width: 200px;
+    height: 50px;
+    margin: 20px auto;
+    font-size: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+   
+      } 
+      
+       
+       
+    
+       
+        
+        
+       
+     
+        
 
       .more-button:hover {
         background-color:#b0a084;
@@ -379,7 +398,7 @@
   <body>
     <header class="header">
         <div class="logo-container">
-            <a href="Bawhome.html">
+            <a href="home.html">
             <img src="images/logo.png" alt="Logo" class="nav-icon"></a>
             <a href="favorites.html">
             <img src="images/heart.png" alt="Heart" class="nav-icon"></a>
@@ -432,7 +451,7 @@
           </div>
         </section>
 
-        <button class="explore-button">Explore</button>
+        <!--<button class="explore-button">Explore</button>-->
       </main>
 
       <section class="destinations-section">
@@ -473,8 +492,9 @@
             <h3 class="destination-name">Oman</h3>
           </article>
         </div>
-
-        <button class="more-button">More</button>
+       
+        <button class="more-button" onclick="window.location.href='Countries.html';">More</button>
+        
       </section>
 
       <section class="about-section">
