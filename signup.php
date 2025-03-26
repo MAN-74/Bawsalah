@@ -65,8 +65,6 @@ $stmt->bind_param("sss", $username, $email, $hashedPassword);
 
 if ($stmt->execute()) {
     $_SESSION["userID"] = $stmt->insert_id;
-    $_SESSION["username"] = $username;
-    $_SESSION["email"] = $email;
     echo json_encode(["status" => "success", "message" => "🎉 Signup successful!"]);
 } else {
     echo json_encode(["status" => "error", "message" => "⚠️ Registration failed, please try again"]);

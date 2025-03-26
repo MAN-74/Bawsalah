@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Mar 26, 2025 at 03:33 PM
+-- Generation Time: Mar 26, 2025 at 05:14 PM
 -- Server version: 5.7.24
 -- PHP Version: 8.3.1
 
@@ -23,25 +23,6 @@ SET time_zone = "+00:00";
 
 -- --------------------------------------------------------
 
---
--- Table structure for table `user`
---
-
-CREATE TABLE `user` (
-  `userID` int(11) NOT NULL,
-  `username` varchar(255) NOT NULL,
-  `email` varchar(255) NOT NULL,
-  `password` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
-
---
--- Indexes for table `user`
---
-ALTER TABLE `user`
-  ADD PRIMARY KEY (`userID`);
-
-  
 --
 -- Table structure for table `category`
 --
@@ -253,6 +234,26 @@ INSERT INTO `destination` (`destinationID`, `name`, `image`, `categoryID`, `city
 (119, 'Al Rahma Mosque', 'rahma.jpeg', 3, 3),
 (120, 'Nassif House Museum ', 'nassif.jpeg', 3, 3);
 
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `user`
+--
+
+CREATE TABLE `user` (
+  `userID` int(11) NOT NULL,
+  `username` varchar(255) NOT NULL,
+  `email` varchar(255) NOT NULL,
+  `password` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `user`
+--
+
+INSERT INTO `user` (`userID`, `username`, `email`, `password`) VALUES
+(1, 'maha ahmed', 'maha@gmail.com', '$2y$10$6J860w3OWkC4NK2pSQ6Aq.hDPJ7kTKRkBN/bjBWfLsUj1tykIlNw6');
+
 --
 -- Indexes for dumped tables
 --
@@ -283,6 +284,22 @@ ALTER TABLE `destination`
   ADD PRIMARY KEY (`destinationID`),
   ADD KEY `categoryID` (`categoryID`),
   ADD KEY `cityID` (`cityID`);
+
+--
+-- Indexes for table `user`
+--
+ALTER TABLE `user`
+  ADD PRIMARY KEY (`userID`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `user`
+--
+ALTER TABLE `user`
+  MODIFY `userID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- Constraints for dumped tables
