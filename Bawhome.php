@@ -8,6 +8,15 @@
       href="https://fonts.googleapis.com/css2?family=Chenla&family=Cherry+Swash&display=swap"
       
     />
+          <?php
+session_start();
+
+// Check if the user is logged in
+if (!isset($_SESSION['userID'])) {
+    header('Location: main.html');  
+    exit();  
+}
+?>
     <style>
       * {
         margin: 0;
@@ -403,15 +412,6 @@
     </style>
   </head>
   <body>
-      <?php
-session_start();
-
-// Check if the user is logged in
-if (!isset($_SESSION['user_id'])) {
-    header('Location: main.html');  
-    exit();  
-}
-?>
     <header class="header">
         <div class="logo-container">
             <a href="Bawhome.php">
