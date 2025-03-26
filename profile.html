@@ -182,7 +182,7 @@
 <body>
     <header class="header">
         <div class="logo-container">
-            <a href="Bawhome.html">
+            <a href="Bawhome.php">
             <img src="images/logo.png" alt="Logo" class="nav-icon"></a>
             <a href="favorites.html">
             <img src="images/heart.png" alt="Heart" class="nav-icon"></a>
@@ -192,7 +192,7 @@
     </header>
 
     <nav class="breadcrumb-nav">
-        <span><a href="Bawhome.html" style="text-decoration: none; color: #7C1F1B;">Home</a> &gt; <a href="profile.html" style="text-decoration: none; color: #7C1F1B;">Profile</a></span>
+        <span><a href="Bawhome.php" style="text-decoration: none; color: #7C1F1B;">Home</a> &gt; <a href="profile.html" style="text-decoration: none; color: #7C1F1B;">Profile</a></span>
         <div class="divider"></div>
     </nav>
 
@@ -202,6 +202,8 @@
             <img src="images/profile_color.png" alt="Profile Image" class="memory-placeholder">
             <button class="memory-btn" onclick="window.location.href='memory.html';">Your Memory</button>
             <button class="logout-btn">Log Out</button>
+
+
         </div>
         <div class="form-section">
             <form>
@@ -229,6 +231,15 @@
             <a href="terms.html">Terms of Service</a>
         </div>
         <p>&copy; 2025 Bawsalah All rights reserved.</p>
-    </footer>  
+    </footer> 
+    <script>
+        // Attach the function to the logout button
+document.addEventListener("DOMContentLoaded", function () {
+    const logoutButton = document.querySelector(".logout-btn");
+    if (logoutButton) {
+        logoutButton.addEventListener("click", logoutUser);
+    }
+});
+    </script>
 </body>
 </html>

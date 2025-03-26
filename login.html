@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bawsalah - Log-In Page</title>
     <link rel="stylesheet" href="Log-SignStyles.css">
-    <script src="login.js"></script>
   </head>
   <body>
     <header class="header">
@@ -26,20 +25,20 @@
                 <h2 class="login-heading">
                   Log in to unlock your next Gulf adventure!
                 </h2>
-                <form id="login-form">
+                <form id="login-form" method="POST" action="login.php">
                   <div class="form-group">
                     <span class="email-icon">@</span>
-                    <input type="email" id="email" placeholder="Enter your email" class="form-field" required>
+                    <input type="email" name ="email" id="email" placeholder="Enter your email" class="form-field" required>
                   </div>
       
                   <div class="form-group">
                     <span class="password-icon">🔒</span>
-                    <input type="password" id="password" placeholder="Enter your password" class="form-field" required>
+                    <input type="password" name="password" id="password" placeholder="Enter your password" class="form-field" required>
                   </div>
       
-                  <p id="error-message" class="error-message" style="color: #7C1F1B; display: none;">⚠️ Invalid email or password</p>
+                  <p id="error-message" class="error-message"></p>
       
-                  <button type="submit" class="login-button">Log In</button>
+                  <button name="submit" type="submit" class="login-button">Log In</button>
                 </form>
               </div>
       
@@ -58,6 +57,47 @@
         </div>
         <p>&copy; 2025 Bawsalah All rights reserved.</p>
     </footer>
+    <script>
+          document.addEventListener("DOMContentLoaded", function () {
+    const loginForm = document.getElementById("login-form");
+    const errorMessage = document.getElementById("error-message");
+
+    loginForm.addEventListener("submit", function (event) {
+        event.preventDefault(); // Prevent default form submission
+
+        let formData = new FormData(loginForm);
+        console.log("Submitting form...");
+
+        // Clear previous error messages
+        errorMessage.textContent = "";
+        errorMessage.style.display = "none";
+
+        fetch("login.php", {
+            method: "POST",
+            body: formData
+        })
+        .then(response => response.json())  // Parse the response as JSON
+        .then(data => {
+            if (data.status === "error") {
+                console.log("Login failed:", data.message);
+                errorMessage.textContent = data.message;
+                errorMessage.style.display = "block";
+            } else if (data.status === "success") {
+                console.log("Login successful:", data.message);
+                alert(data.message);  // Show login success message
+                loginForm.reset();
+                window.location.href = "Bawhome.php"; // Redirect to homepage after success
+            }
+        })
+        .catch(error => {
+            console.error("Error:", error);
+            errorMessage.textContent = "⚠️ An unexpected error occurred.";
+            errorMessage.style.display = "block";
+        });
+    });
+});
+
+  </script>
   </body>
 </html>
 

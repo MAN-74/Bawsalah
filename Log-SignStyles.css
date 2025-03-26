@@ -219,6 +219,11 @@ input::placeholder {
     margin-top: 5px;
 }
 
+/* Show error messages when JavaScript adds the 'show' class */
+.error-message.show {
+    display: block;
+}
+
 
 /* Responsive Design */
 @media (max-width: 1024px) {

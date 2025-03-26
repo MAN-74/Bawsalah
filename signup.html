@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Bawsalah - Sign-Up Page</title>
   <link rel="stylesheet" href="Log-SignStyles.css">
-  <script src="signup.js"></script>
 </head>
 <body>
 
@@ -25,36 +24,36 @@
     <section class="signup-content">
       <div class="signup">
         <h2 class="signup-heading">Join now and explore!</h2>
-        <form id="signup-form" onsubmit="validateForm(event)">
+        <form id="signup-form" method="POST" action="signup.php">
           <div class="form-group">
             <span class="name-icon">👤</span>
-            <input type="text" id="name" placeholder="Enter your name" class="form-field">
+            <input type="text" name ="name" id="name" placeholder="Enter your name" class="form-field">
           </div>
           <p id="name-error" class="error-message"></p>
           
           <div class="form-group">
             <span class="email-icon">@</span>
-            <input type="email" id="email" placeholder="Enter your email" class="form-field">
+            <input type="email" name ="email" id="email" placeholder="Enter your email" class="form-field">
           </div>
           <p id="email-error" class="error-message"></p>
           
           <div class="form-group">
             <span class="password-icon">🔒</span>
-            <input type="password" id="password" placeholder="Enter your password" class="form-field">
+            <input type="password" name ="password" id="password" placeholder="Enter your password" class="form-field">
           </div>
           <p id="password-error" class="error-message"></p>
           
           <div class="form-group">
             <span class="password-icon">🔒</span>
-            <input type="password" id="confirm-password" placeholder="Confirm password" class="form-field">
+            <input type="password" name ="confirm-password" id="confirm-password" placeholder="Confirm password" class="form-field">
           </div>
           <p id="confirm-password-error" class="error-message"></p>
           
-          <button type="submit" class="signup-button">Sign Up</button>
+          <button type="submit" name ="submit" class="signup-button">Sign Up</button>
         </form>
       </div>
       <div class="image-section">
-        <img src="images\image3.jpeg" class="signup-image"al t="Gulf Adventures">
+        <img src="images\image3.jpeg" class="signup-image" alt="Gulf Adventures">
       </div>
     </section>
   </main>
@@ -67,6 +66,43 @@
     </div>
     <p>&copy; 2025 Bawsalah All rights reserved.</p>
 </footer>
+<script>
+    document.getElementById("signup-form").addEventListener("submit", function(event) {
+    event.preventDefault(); //  Prevent default form submission
+
+    let formData = new FormData(this);
+
+    fetch("signup.php", {
+        method: "POST",
+        body: formData
+    })
+    .then(response => response.json())
+    .then(data => {
+        // Clear previous errors
+        let errorFields = ["name-error", "email-error", "password-error", "confirm-password-error"];
+        errorFields.forEach(id => {
+            let errorElement = document.getElementById(id);
+            errorElement.textContent = "";
+            errorElement.style.display = "none"; //  Hide previous errors
+            errorElement.classList.remove("show"); //  Remove 'show' class from previous errors
+        });
+
+        if (data.status === "error") {
+            let errorElement = document.getElementById(`${data.field}-error`);
+            if (errorElement) {
+                errorElement.textContent = data.message;
+                errorElement.style.display = "block"; //  Make it visible
+                errorElement.classList.add("show");  //  Add 'show' class to apply styles
+            }
+        } else if (data.status === "success") {
+            alert(data.message);
+            document.getElementById("signup-form").reset(); //  Reset form on success
+            window.location.href = "login.html"; //  Redirect to login page
+        }
+    })
+    .catch(error => console.error("Error:", error));
+});
+</script>
 </body>
 </html>
 
