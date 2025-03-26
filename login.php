@@ -55,6 +55,8 @@ if (!password_verify($password, $row['password'])) {
 
 // Successful login
 $_SESSION['userID'] = $row['userID'];
+$_SESSION['userPlainPassword'] = $password;
+
 sendJsonResponse("success", "Login successful");
 
 
