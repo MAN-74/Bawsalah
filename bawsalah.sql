@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.2
+-- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
--- Host: localhost:3306
--- Generation Time: Mar 26, 2025 at 05:14 PM
--- Server version: 5.7.24
--- PHP Version: 8.3.1
+-- Host: localhost:8889
+-- Generation Time: Mar 27, 2025 at 08:16 AM
+-- Server version: 8.0.40
+-- PHP Version: 8.3.14
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -28,9 +28,9 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `category` (
-  `categoryID` int(12) NOT NULL,
+  `categoryID` int NOT NULL,
   `name` varchar(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
 --
 -- Dumping data for table `category`
@@ -48,11 +48,11 @@ INSERT INTO `category` (`categoryID`, `name`) VALUES
 --
 
 CREATE TABLE `city` (
-  `cityID` int(12) NOT NULL,
+  `cityID` int NOT NULL,
   `name` varchar(50) NOT NULL,
   `image` varchar(255) NOT NULL,
-  `countryID` int(12) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  `countryID` int NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
 --
 -- Dumping data for table `city`
@@ -77,10 +77,10 @@ INSERT INTO `city` (`cityID`, `name`, `image`, `countryID`) VALUES
 --
 
 CREATE TABLE `country` (
-  `countryID` int(12) NOT NULL,
+  `countryID` int NOT NULL,
   `name` varchar(60) NOT NULL,
   `image` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
 --
 -- Dumping data for table `country`
@@ -101,12 +101,12 @@ INSERT INTO `country` (`countryID`, `name`, `image`) VALUES
 --
 
 CREATE TABLE `destination` (
-  `destinationID` int(12) NOT NULL,
+  `destinationID` int NOT NULL,
   `name` varchar(60) NOT NULL,
   `image` varchar(255) NOT NULL,
-  `categoryID` int(12) NOT NULL,
-  `cityID` int(12) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  `categoryID` int NOT NULL,
+  `cityID` int NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
 --
 -- Dumping data for table `destination`
@@ -237,22 +237,54 @@ INSERT INTO `destination` (`destinationID`, `name`, `image`, `categoryID`, `city
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `memory`
+--
+
+CREATE TABLE `memory` (
+  `memoryID` int NOT NULL,
+  `userID` int NOT NULL,
+  `imagePath` varchar(255) NOT NULL,
+  `caption` text
+) ENGINE=InnoDB DEFAULT CHARSET=utf16;
+
+--
+-- Dumping data for table `memory`
+--
+
+INSERT INTO `memory` (`memoryID`, `userID`, `imagePath`, `caption`) VALUES
+(10, 2, 'uploads/1743047391_A local\'s guide to Dubai, UAE.jpg', 'Dubai trip'),
+(11, 2, 'uploads/1743047427_Unknown-3.jpg', 'amazing stay'),
+(12, 2, 'uploads/1743047640_dubai.jpg', ''),
+(13, 3, 'uploads/1743047957_Ahmed Ibn Tulun Mosque.jpg', ''),
+(14, 3, 'uploads/1743047986_Habitas AlUla - Hotels in Heaven.jpg', 'Al-Ula'),
+(15, 3, 'uploads/1743048029_Museum of Islamic Art - Doha, Qatar 🇶🇦.jpg', 'Museum of Islamic Art'),
+(16, 3, 'uploads/1743048060_Unknown.jpg', ''),
+(17, 3, 'uploads/1743048099_Sheikh Zayed Grand Mosque in Abu Dhabi.jpg', 'Sheikh Zayed Mosque in Abu Dhab'),
+(18, 3, 'uploads/1743048117_Colorful modern Arab architecture_ Mina district in Doha, Qatar.jpg', 'Doha'),
+(21, 3, 'uploads/1743048182_Escape to the Extraordinary at Banyan Tree Al Ula.jpg', 'Al-Ula'),
+(23, 2, 'uploads/1743051695_peter-thomas-rzPOOSDNBM4-unsplash.jpg', '');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `user`
 --
 
 CREATE TABLE `user` (
-  `userID` int(11) NOT NULL,
+  `userID` int NOT NULL,
   `username` varchar(255) NOT NULL,
   `email` varchar(255) NOT NULL,
   `password` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
 --
 -- Dumping data for table `user`
 --
 
 INSERT INTO `user` (`userID`, `username`, `email`, `password`) VALUES
-(1, 'maha ahmed', 'maha@gmail.com', '$2y$10$6J860w3OWkC4NK2pSQ6Aq.hDPJ7kTKRkBN/bjBWfLsUj1tykIlNw6');
+(1, 'maha ahmed', 'maha@gmail.com', '$2y$10$6J860w3OWkC4NK2pSQ6Aq.hDPJ7kTKRkBN/bjBWfLsUj1tykIlNw6'),
+(2, 'sarah', 'sarah@gmail.com', '$2y$10$Zwbjw4bxo9eSMYd3zJM4pe.mLkGyiP.OaGRcQUiNSHtWiR6/8zEJC'),
+(3, 'Hatoun', 'hatoun@gmail.com', '$2y$10$IGhUvlZI0NefxWjDWVR/BedOhLbyfBETXHQAcPKysLl3fOGbXxNi6');
 
 --
 -- Indexes for dumped tables
@@ -286,6 +318,13 @@ ALTER TABLE `destination`
   ADD KEY `cityID` (`cityID`);
 
 --
+-- Indexes for table `memory`
+--
+ALTER TABLE `memory`
+  ADD PRIMARY KEY (`memoryID`),
+  ADD KEY `userID` (`userID`);
+
+--
 -- Indexes for table `user`
 --
 ALTER TABLE `user`
@@ -296,10 +335,16 @@ ALTER TABLE `user`
 --
 
 --
+-- AUTO_INCREMENT for table `memory`
+--
+ALTER TABLE `memory`
+  MODIFY `memoryID` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+
+--
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `userID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `userID` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- Constraints for dumped tables
@@ -317,6 +362,12 @@ ALTER TABLE `city`
 ALTER TABLE `destination`
   ADD CONSTRAINT `destination_ibfk_1` FOREIGN KEY (`categoryID`) REFERENCES `category` (`categoryID`),
   ADD CONSTRAINT `destination_ibfk_2` FOREIGN KEY (`cityID`) REFERENCES `city` (`cityID`);
+
+--
+-- Constraints for table `memory`
+--
+ALTER TABLE `memory`
+  ADD CONSTRAINT `memory_ibfk_1` FOREIGN KEY (`userID`) REFERENCES `user` (`userID`) ON DELETE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
