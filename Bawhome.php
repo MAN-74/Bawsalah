@@ -287,16 +287,6 @@ if (!isset($_SESSION['userID'])) {
    
       } 
       
-       
-       
-    
-       
-        
-        
-       
-     
-        
-
       .more-button:hover {
         background-color:#b0a084;
       }
@@ -419,7 +409,7 @@ if (!isset($_SESSION['userID'])) {
             <a href="favorites.html">
             <img src="images/heart.png" alt="Heart" class="nav-icon"></a>
         </div>
-        <a href="profile.html">
+        <a href="profile.php">
         <img src="images/profile_color.png" alt="Profile" class="nav-icon"></a>
     </header>
     
