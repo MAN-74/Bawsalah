@@ -297,10 +297,10 @@ while ($row = $destResult->fetch_assoc()) {
             <div class="category-card" data-name="<?= htmlspecialchars($item['name']) ?>" data-category="<?= strtolower($categories[$categoryID]) ?>">
                 <img src="../<?= htmlspecialchars($item['image']) ?>" alt="<?= htmlspecialchars($item['name']) ?>">
                 <p><?= htmlspecialchars($item['name']) ?></p>
-                <div class="favorite-container" onclick="toggleFavorite(this, '<?= strtolower($categories[$categoryID]) ?>')">
-                    <div class="heart-box"><img src="../images/fav.png" alt="Favorite"></div>
-                    <span class="favorite-text">Add to favorites</span>
-                </div>
+                <div class="favorite-container" onclick="location.href='addfavorite.php?name=<?= urlencode($item['name']) ?>&category=<?= urlencode($categories[$categoryID]) ?>&userID=<?= $userID ?>'">
+    <div class="heart-box"><img src="../images/fav.png" alt="Favorite"></div>
+    <span class="favorite-text">Add to favorites</span>
+</div>
             </div>
         <?php endforeach; ?>
     </div>
