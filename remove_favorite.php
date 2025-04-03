@@ -6,19 +6,19 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if (isset($_POST['destinationID']) && isset($_POST['categoryID'])) {
         $destinationID = $_POST['destinationID'];
 
-        // تأكدي أن المستخدم مسجل دخول
+        // Ensure the user is logged in
         if (!isset($_SESSION['userID'])) {
             die("You must be logged in to remove favorites.");
         }
 
         $userID = $_SESSION['userID'];
 
-        // تنفيذ عملية الحذف
+        // Execute the deletion process
         $stmt = $conn->prepare("DELETE FROM favoriteslist WHERE userID = ? AND destinationID = ?");
         $stmt->bind_param("ii", $userID, $destinationID);
 
         if ($stmt->execute()) {
-            // إعادة التوجيه بعد الحذف
+            // Redirect after successful removal
             header("Location: favorites.php"); 
             exit();
         } else {
