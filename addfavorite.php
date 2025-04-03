@@ -10,7 +10,7 @@ $userID = $_SESSION['userID'];
 $destinationID = $_POST['destinationID'];
 $categoryID = $_POST['categoryID'];
 
-// تأكد أن المكان غير مضاف مسبقًا
+// Ensure the destination is not already added
 $check_stmt = $conn->prepare("SELECT * FROM favoriteslist WHERE userID = ? AND destinationID = ?");
 $check_stmt->bind_param("ii", $userID, $destinationID);
 $check_stmt->execute();
@@ -19,7 +19,7 @@ $result = $check_stmt->get_result();
 if ($result->num_rows > 0) {
     echo "Already in favorites!";
 } else {
-    // إدخال المكان في المفضلة
+    // Insert the destination into favorites
     $stmt = $conn->prepare("INSERT INTO favoriteslist (userID, destinationID, categoryID) VALUES (?, ?, ?)");
     $stmt->bind_param("iii", $userID, $destinationID, $categoryID);
     
