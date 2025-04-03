@@ -8,7 +8,7 @@ if (!isset($_SESSION['userID'])) {
 
 $userID = $_SESSION['userID'];
 
-// استعلام جلب الأماكن المفضلة حسب التصنيف
+// Query to fetch favorite places by category
 $stmt = $conn->prepare("SELECT d.destinationID, d.name AS destination_name, d.image AS destination_image, c.name AS category_name
                         FROM favoriteslist f
                         JOIN destination d ON f.destinationID = d.destinationID
@@ -18,14 +18,14 @@ $stmt->bind_param("i", $userID);
 $stmt->execute();
 $result = $stmt->get_result();
 
-// تخزين البيانات في مصفوفة لكل تصنيف
+// Store data in an array for each category
 $favorites = [
     "Accommodations" => [],
     "Cafés & Restaurants" => [],
     "Adventures" => []
 ];
 
-// توزيع البيانات حسب التصنيف
+// Distribute data based on category
 while ($row = $result->fetch_assoc()) {
     $favorites[$row['category_name']][] = $row;
 }
@@ -33,6 +33,7 @@ while ($row = $result->fetch_assoc()) {
 $stmt->close();
 $conn->close();
 ?>
+
 
 <head>
     <meta charset="UTF-8">
@@ -269,14 +270,14 @@ $conn->close();
         .remove-button {
     background: none;
     border: none;
-    color:#B71C1C;  /* أحمر */
+    color:#B71C1C;  
     font-size: 16px;
     cursor: pointer;
     text-align: center;
 }
 
 .remove-button:hover {
-    color: #B71C1C; /* لون أحمر داكن عند التمرير */
+    color: #B71C1C; 
 }
     </style>
 </head>
@@ -308,7 +309,7 @@ if (!empty($favorites["Accommodations"])) {
         echo "<img src='images/" . htmlspecialchars($place['destination_image']) . "' alt='" . htmlspecialchars($place['destination_name']) . "'>";
         echo "<p>" . htmlspecialchars($place['destination_name']) . "</p>";
         
-        // إضافة نموذج الحذف مع النص فقط
+       
         echo "<form method='POST' action='remove_favorite.php' style='display:inline;'>";
         echo "<input type='hidden' name='destinationID' value='" . htmlspecialchars($place['destinationID']) . "'>";
         echo "<input type='hidden' name='categoryID' value='" . htmlspecialchars($place['category_name']) . "'>";
@@ -335,7 +336,6 @@ if (!empty($favorites["Accommodations"])) {
             foreach ($favorites["Cafés & Restaurants"] as $place) {
                 echo "<div class='category-card'>";
  echo "<img src='images/" . htmlspecialchars($place['destination_image']) . "' alt='" . htmlspecialchars($place['destination_name']) . "'>";                echo "<p>" . htmlspecialchars($place['destination_name']) . "</p>";
-                  // إضافة نموذج الحذف مع النص باللون الأحمر
         echo "<form method='POST' action='remove_favorite.php' style='display:inline;'>";
         echo "<input type='hidden' name='destinationID' value='" . htmlspecialchars($place['destinationID']) . "'>";
         echo "<input type='hidden' name='categoryID' value='" . htmlspecialchars($place['category_name']) . "'>";
@@ -360,7 +360,6 @@ if (!empty($favorites["Accommodations"])) {
             foreach ($favorites["Adventures"] as $place) {
                 echo "<div class='category-card'>";
  echo "<img src='images/" . htmlspecialchars($place['destination_image']) . "' alt='" . htmlspecialchars($place['destination_name']) . "'>";                echo "<p>" . htmlspecialchars($place['destination_name']) . "</p>";
-                  // إضافة نموذج الحذف مع النص باللون الأحمر
         echo "<form method='POST' action='remove_favorite.php' style='display:inline;'>";
         echo "<input type='hidden' name='destinationID' value='" . htmlspecialchars($place['destinationID']) . "'>";
         echo "<input type='hidden' name='categoryID' value='" . htmlspecialchars($place['category_name']) . "'>";
