@@ -1,8 +1,12 @@
-<?php 
-ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1);
-error_reporting(E_ALL);
-include '../db_connection.php';
+<?php
+include 'db_connection.php';
+session_start();
+
+if (!isset($_SESSION['userID'])) {
+    die("You must be logged in to view favorites.");
+}
+
+$userID = $_SESSION['userID'];
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -168,7 +172,7 @@ while ($country = $countryResult->fetch_assoc()) {
     while ($city = $cityResult->fetch_assoc()) {
         $cityName = $city['name'];
         $cityImage = $city['image'];
-        $cityPage = "../Cities/City.php?name=" . urlencode($cityName);
+        $cityPage = "Cities.php?name=" . urlencode($cityName);
 
         echo "<a href='{$cityPage}' style='text-decoration: none; color: inherit;'>";
         echo "<div class='card'>";

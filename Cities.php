@@ -1,8 +1,12 @@
 <?php
-ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1);
-error_reporting(E_ALL);
-include '../db_connection.php';
+include 'db_connection.php';
+session_start();
+
+if (!isset($_SESSION['userID'])) {
+    die("You must be logged in to view favorites.");
+}
+
+$userID = $_SESSION['userID'];
 
 // 1. Check if city name is passed
 if (!isset($_GET['name'])) {
@@ -277,9 +281,9 @@ while ($row = $destResult->fetch_assoc()) {
 
 <section class="carousel-container">
     <div class="carousel" id="carousel">
-        <img src="../images/landscape1.jpg" class="active">
-        <img src="../images/landscape2.webp">
-        <img src="../images/landscape5.jpg">
+        <img src="images/landscape1.jpg" class="active">
+        <img src="images/landscape2.webp">
+        <img src="images/landscape5.jpg">
     </div>
     <button class="prev" onclick="moveSlide(-1)">&#10094;</button>
     <button class="next" onclick="moveSlide(1)">&#10095;</button>
@@ -298,7 +302,7 @@ while ($row = $destResult->fetch_assoc()) {
                 <img src="../<?= htmlspecialchars($item['image']) ?>" alt="<?= htmlspecialchars($item['name']) ?>">
                 <p><?= htmlspecialchars($item['name']) ?></p>
                 <div class="favorite-container" onclick="location.href='addfavorite.php?name=<?= urlencode($item['name']) ?>&category=<?= urlencode($categories[$categoryID]) ?>&userID=<?= $userID ?>'">
-    <div class="heart-box"><img src="../images/fav.png" alt="Favorite"></div>
+    <div class="heart-box"><img src="images/fav.png" alt="Favorite"></div>
     <span class="favorite-text">Add to favorites</span>
 </div>
             </div>
@@ -340,11 +344,11 @@ while ($row = $destResult->fetch_assoc()) {
 
         if (index === -1) {
             favorites.push({ name: itemName });
-            heartImg.src = "../images/heart-filled.png";
+            heartImg.src = "images/heart-filled.png";
             favoriteText.textContent = "Added to favorites";
         } else {
             favorites.splice(index, 1);
-            heartImg.src = "../images/fav.png";
+            heartImg.src = "images/fav.png";
             favoriteText.textContent = "Add to favorites";
         }
 
