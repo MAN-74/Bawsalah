@@ -1,405 +1,64 @@
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Bawsalah - Explore the Arab Gulf</title>
-    <link
-      href="https://fonts.googleapis.com/css2?family=Chenla&family=Cherry+Swash&display=swap"
-      
-    />
-          <?php
+<?php
+
 session_start();
+include 'db_connection.php';
 
 // Check if the user is logged in
 if (!isset($_SESSION['userID'])) {
     header('Location: main.html');  
     exit();  
 }
+
+//php search start
+
+// Check if the user has executed a search query
+$hasSearched = isset($_POST['search']) || isset($_POST['category']) || isset($_POST['country']);
+$search = isset($_POST['search']) ? "%" . $conn->real_escape_string($_POST['search']) . "%" : "%";
+$category = isset($_POST['category']) && $_POST['category'] != "" ? (int)$_POST['category'] : null;
+$country = isset($_POST['country']) && $_POST['country'] != "" ? (int)$_POST['country'] : null;
+
+// Prepare SQL query 
+if ($hasSearched) {
+    $sql = "SELECT d.name, d.image, c.name AS city_name, co.name AS country_name
+            FROM destination d
+            JOIN city c ON d.cityID = c.cityID
+            JOIN country co ON c.countryID = co.countryID
+            WHERE d.name LIKE ?";
+
+    $params = [$search];
+    $types = "s"; // Search query parameter for text-based search
+
+    if ($category) {
+        $sql .= " AND d.categoryID = ?";
+        $params[] = $category;
+        $types .= "i"; // Category parameter
+    }
+
+    if ($country) {
+        $sql .= " AND co.countryID = ?";
+        $params[] = $country;
+        $types .= "i"; // Country parameter
+    }
+
+    // Execute the query
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param($types, ...$params);
+    $stmt->execute();
+    $result = $stmt->get_result();
+   }
+    //php search end
+
+
 ?>
-    <style>
-      * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-      }
-
-      body {
-        font-family: sans-serif;
-        background-color: #fffaf1;
-      }
-
-      .app-container {
-        min-height: 100vh;
-        width: 100%;
-        background-color: #fffaf1;
-      }
-
-     
-        .header, .footer {
-            background-color: #7C1F1B;
-            padding: 20px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            border-radius: 0 0 30px 30px;
-            box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-        }
-        .footer {
-            padding: 10px;
-            border-radius: 30px 30px 0 0;
-            flex-direction: column;
-            text-align: center;
-            margin-top: 10px;
-        }
-        .footer-links {
-            display: flex;
-            gap: 20px;
-            margin-top: 10px;
-        }
-        .footer-links a {
-            color: #CBB696;
-            text-decoration: none;
-            transition: color 0.3s ease;
-            font-size: 14px;
-        }
-        .footer-links a:hover {
-            color: #ae9c80;
-        }
-        .footer p {
-            color: #CBB696;
-            margin-top: 3px;
-            font-size: 12px;
-        }
-        .logo-container {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-        .nav-icon {
-            width: 50px;
-            transition: transform 0.3s ease;
-        }
-        .nav-icon:hover {
-            transform: scale(1.1);
-        }
-      
-        .main-content {
-        margin: 10px auto;
-        max-width: 1200px;
-        border-radius: 10px;
-        padding:10px;
-        position: relative;
-      }
-
-
-      .search-section {
-        display: flex;
-        justify-content: center;
-        margin-bottom: 40px;
-       
-      }
-
-      .search-bar {
-        border-radius: 13px;
-        width: 370px;
-        height: 26px;
-        display: flex;
-        align-items: center;
-        padding: 0 15px;
-        background-color:#cbb797;
-        box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-      }
-
-      .search-input {
-        background: transparent;
-        border:0;
-        flex: 1;
-        font-family: 'Chenla', sans-serif;
-        font-size: 11px;
-        color: #000;
-        outline: none;
-      }
-      
-
-      .search-icon-container {
-        width: 38px;
-        height: 26px;
-        border-radius: 13px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        margin-left: 10px;
-        background-color:#cbb797;
-      }
-
-      .search-icon {
-        width: 15px;
-        height: 15px;
-      }
-
-      .image-grid {
-        display: flex;
-        gap:10px;
-        margin-bottom: 30px;
-        justify-content: center;
-      }
-
-      .grid-image-left {
-        border-radius: 2px;
-        object-fit: cover;
-        width: 450px;
-        height: 1020px;
-        transition: transform 0.3s ease;
-        box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-      }
-      
-      .grid-image-left:hover {
-        transform: scale(1.02); }
-
-      .grid-image-middle {
-        border-radius: 2px;
-        object-fit: cover;
-        width: 375px;
-        height: 1020px;
-        transition: transform 0.3s ease;
-        box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-      }
-      .grid-image-middle:hover {
-            transform: scale(1.1);
-        }
-
-      .right-column {
-        display: flex;
-        flex-direction: column;
-        gap:10px;
-      }
-
-      .grid-image-right-top {
-        border-radius: 2px;
-        object-fit: cover;
-        width: 350px;
-        height: 560px;
-        transition: transform 0.3s ease;
-        box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-      }
-      .grid-image-right-top:hover{
-        transform: scale(1.1);
-      }
-
-      .grid-image-right-bottom {
-        border-radius: 2px;
-        object-fit: cover;
-        width: 350px;
-        height: 450px;
-        transition: transform 0.3s ease;
-        box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-      }
-      .grid-image-right-bottom:hover{
-        transform: scale(1.1);
-      }
-
-      .explore-button {
-        width: 200px;
-        height: 50px;
-        border-radius: 1px;
-        margin: 20px auto;
-        font-family: 'Chenla', sans-serif;
-        font-size: 20px;
-        color: rgba(0, 0, 0, 0.91);
-        /*box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25); */
-        background-color: #cbb797;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        cursor: pointer;
-        
-      }
-
-      .explore-button:hover {
-        background-color:#b0a084;
-      }
-
-      .destinations-section {
-        margin: 10px auto;
-        max-width: 1200px;
-        border-radius: 10px;
-        padding: 10px;
-        background-color: rgba(124, 31, 27, 0.95);
-      }
-
-      .destinations-grid {
-        display: flex;
-        justify-content: center;
-        gap: 40px;
-        margin-bottom: 40px;
-      }
-
-      .destination-card {
-        width: 225px;
-        height: 500px;
-        border-radius: 45px;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        padding: 30px ;
-        background-color:#cbb696;
-        transition: transform 0.3s ease;
-      }
-      .destination-card:hover{
-        transform: scale(1.1);
-      }
-
-      .destination-image {
-        width: 178px;
-        height: 327px;
-        border-radius: 20px;
-        margin-bottom: 30px;
-        object-fit: cover;
-      }
-      
-
-      .destination-name {
-        font-family: 'Chenla', sans-serif;
-        font-size: 20px;
-        color: rgba(0, 0, 0, 0.91);
-        text-align: center;
-      }
-      
-
-      .more-button {
-    background-color:  rgba(203, 182, 150, 0.991);
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-    border: none;
-    border-radius: 25px;
-    color:  #7c1f1b;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
-    font-size: 16px;
-    cursor: pointer;
-    width: 200px;
-    height: 50px;
-    margin: 20px auto;
-    font-size: 20px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 10px;
-   
-      } 
-      
-      .more-button:hover {
-        background-color:#b0a084;
-      }
-
-      .about-section {
-        margin: 10px auto;
-        max-width: 1200px;
-        border-radius:10px 10px 100px 10px ;
-        padding: 10px;
-        display: flex;
-        align-items: center;
-        background-color: #cbb696;
-      }
-
-      .about-content {
-        flex: 1;
-        padding: 0px 10px;
-      }
-
-      .about-title {
-        color: #7c1f1b;
-        font-family: Times New Roman;        
-        font-size: 40px;
-        margin-bottom: 30px;
-        text-align: justify;
-      }
-
-      .about-text {
-        color: #000;
-        font-family: Times New Roman;
-        font-size: 20px;
-        line-height: 1.4;
-        text-align: justify;
-      }
-
-      .about-image {
-        width: 250px;
-        height: 357px;
-        border-radius: 100px 0px 100px 0px;
-      }
-
-      @media (max-width: 991px) {
-        .main-content {
-          margin: 10px;
-          padding: 20px;
-        }
-
-        .image-grid {
-          flex-direction: column;
-        }
-
-        .grid-image-left,
-        .grid-image-middle,
-        .grid-image-right-top,
-        .grid-image-right-bottom {
-          width: 100%;
-          height: auto;
-        }
-
-        .destinations-section {
-          margin: 10px;
-          padding: 20px;
-        }
-
-        .destinations-grid {
-          flex-wrap: wrap;
-          gap: 20px;
-        }
-
-        .destination-card {
-          width: calc(50% - 10px);
-        }
-
-        .about-section {
-          margin: 10px;
-          padding: 20px;
-          flex-direction: column;
-        }
-
-        .about-content {
-          margin-bottom: 20px;
-        }
-      }
-
-      @media (max-width: 640px) {
-        .site-header {
-          height: 80px;
-          padding: 0 15px;
-        }
-
-       
-
-        .search-bar {
-          width: 90%;
-        }
-
-        .destinations-grid {
-          flex-direction: column;
-        }
-
-        .destination-card {
-          width: 100%;
-        }
-
-        .about-title {
-          font-size: 30px;
-        }
-
-        .about-text {
-          font-size: 24px;
-        }
-      }
-    </style>
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bawsalah - Explore the Arab Gulf</title>
+    <link href="https://fonts.googleapis.com/css2?family=Chenla&family=Cherry+Swash&display=swap" />
+    <link rel="stylesheet" href="Bawhome.css">   
+    
   </head>
   <body>
     <header class="header">
@@ -415,22 +74,66 @@ if (!isset($_SESSION['userID'])) {
     
 
       <main class="main-content">
-        <section class="search-section">
-          <div class="search-bar">
-            <input
-              type="text"
-              placeholder="Enter your destination"
-              class="search-input"
-            />
-            <div class="search-icon-container">
-              <img
-                src="images/search.png"
-                alt="Search"
-                class="search-icon"
-              />
+     <!-- search start-->
+     <div class="search-section">
+     <section class="search-container">
+     <form method="POST" action="<?php echo $_SERVER['PHP_SELF']; ?>" class="search-form">
+        
+        <!-- search bar-->
+        <div class="search-bar">
+            <input type="text" name="search" placeholder="Search destinations..." class="search-input" id="searchInput" />
+            
+        </div>
+        
+        <!-- filters-->
+        <div class="filters-container">
+            <!-- category filter-->
+            <select name="category" class="filter-dropdown" id="categoryFilter">
+                <option value="">All Categories</option>
+                <option value="1">Accommodations</option>
+                <option value="2">Cafés & Restaurants</option>
+                <option value="3">Adventures</option>
+            </select>
+
+            <!-- country filter-->
+            <select name="country" class="filter-dropdown" id="countryFilter">
+                <option value="">All Countries</option>
+                <option value="1">Saudi Arabia</option>
+                <option value="2">UAE</option>
+                <option value="3">Qatar</option>
+                <option value="4">Bahrain</option>
+                <option value="5">Kuwait</option>
+                <option value="6">Oman</option>
+            </select>
+
+            <!-- search button-->
+            <button type="submit" class="search-btn">Search</button>
+        </div>
+    </form>
+</section>
+
+<!-- search results-->
+<?php if ($hasSearched): ?>
+    <section id="results">
+        <?php if ($result->num_rows > 0): ?>
+            <div class="cards-container">
+                <?php while ($row = $result->fetch_assoc()): ?>
+                    <div class="card">
+                        <img src="images/<?php echo htmlspecialchars($row['image']); ?>" alt="<?php echo htmlspecialchars($row['name']); ?>">
+                        <h3 class="card-title"><?php echo htmlspecialchars($row['name']); ?></h3>
+                        <p class="card-info">City: <?php echo htmlspecialchars($row['city_name']); ?> | Country: <?php echo htmlspecialchars($row['country_name']); ?></p>
+                    </div>
+                <?php endwhile; ?>
             </div>
-          </div>
-        </section>
+        <?php else: ?>
+            <p>No results found.</p>
+        <?php endif; ?>
+        <!-- close search btn-->
+        <button type="button" class="close-btn" onclick="resetSearch()">Close</button>
+    </section>
+    <?php endif; ?>
+        </div>     
+ <!-- search end-->
 
         <section class="image-grid">
           <img
@@ -499,7 +202,7 @@ if (!isset($_SESSION['userID'])) {
           </article>
         </div>
        
-        <button class="more-button" onclick="window.location.href='Countries.html';">More</button>
+        <button class="more-button" onclick="window.location.href='Countries.php';">More</button>
         
       </section>
 
@@ -529,6 +232,22 @@ if (!isset($_SESSION['userID'])) {
         />
       </section>
     </div>
+
+    <!-- script for search close btn -->
+    <script>
+        function resetSearch() {
+    document.getElementById("searchInput").value = "";
+    document.getElementById("categoryFilter").value = "";
+    document.getElementById("countryFilter").value = "";
+
+    const resultsSection = document.getElementById("results");
+    if (resultsSection) {
+        resultsSection.style.display = "none";
+    }
+   }
+</script>
+
+
     <footer class="footer">
         <div class="footer-links">
             <a href="about.html">About Us</a>

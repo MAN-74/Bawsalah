@@ -332,10 +332,13 @@ if (!empty($favorites["Accommodations"])) {
     <h3  class="category-title">Favorite Cafés & Restaurants</h3>
     <div class="category-grid">
         <?php
-        if (!empty($favorites["Cafés & Restaurants"])) {
-            foreach ($favorites["Cafés & Restaurants"] as $place) {
+        if (!empty($favorites["Cafés & Resturants"])) {
+            foreach ($favorites["Cafés & Resturants"] as $place) {
                 echo "<div class='category-card'>";
- echo "<img src='images/" . htmlspecialchars($place['destination_image']) . "' alt='" . htmlspecialchars($place['destination_name']) . "'>";                echo "<p>" . htmlspecialchars($place['destination_name']) . "</p>";
+ echo "<img src='images/" . htmlspecialchars($place['destination_image']) . "' alt='" . htmlspecialchars($place['destination_name']) . "'>";
+        echo "<p>" . htmlspecialchars($place['destination_name']) . "</p>";
+        
+       
         echo "<form method='POST' action='remove_favorite.php' style='display:inline;'>";
         echo "<input type='hidden' name='destinationID' value='" . htmlspecialchars($place['destinationID']) . "'>";
         echo "<input type='hidden' name='categoryID' value='" . htmlspecialchars($place['category_name']) . "'>";
@@ -344,13 +347,12 @@ if (!empty($favorites["Accommodations"])) {
         echo "</button>";
         echo "</form>";
 
-     
         echo "</div>";
     }
 } else {
     echo "<p>No favorite accommodations yet.</p>";
 }
-        ?>
+?>
     </div>
 
     <h3  class="category-title">Favorite Adventures</h3>

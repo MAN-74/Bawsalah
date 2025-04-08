@@ -302,7 +302,7 @@ while ($row = $destResult->fetch_assoc()) {
                 <img src="../<?= htmlspecialchars($item['image']) ?>" alt="<?= htmlspecialchars($item['name']) ?>">
                 <p><?= htmlspecialchars($item['name']) ?></p>
                 <div class="favorite-container" onclick="location.href='addfavorite.php?name=<?= urlencode($item['name']) ?>&category=<?= urlencode($categories[$categoryID]) ?>&userID=<?= $userID ?>'">
-    <div class="heart-box"><img src="images/fav.png" alt="Favorite"></div>
+    
     <span class="favorite-text">Add to favorites</span>
 </div>
             </div>
