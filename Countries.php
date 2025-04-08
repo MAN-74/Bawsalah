@@ -148,14 +148,12 @@ $userID = $_SESSION['userID'];
 </nav>
 
 <?php
-// Fetch all countries
 $countryQuery = "SELECT * FROM country";
 $countryResult = $conn->query($countryQuery);
 
 if (!$countryResult || $countryResult->num_rows === 0) {
     die("No countries found.");
 }
-
 
 while ($country = $countryResult->fetch_assoc()) {
     $countryID = $country['countryID'];
@@ -165,7 +163,6 @@ while ($country = $countryResult->fetch_assoc()) {
     echo "<h2 class='country-title'>" . htmlspecialchars($countryName) . "</h2>";
     echo "<div class='cards-container'>";
 
-    // Fetch cities under this country
     $cityQuery = "SELECT * FROM city WHERE countryID = $countryID";
     $cityResult = $conn->query($cityQuery);
 
@@ -176,7 +173,7 @@ while ($country = $countryResult->fetch_assoc()) {
 
         echo "<a href='{$cityPage}' style='text-decoration: none; color: inherit;'>";
         echo "<div class='card'>";
-        echo "<img src='{$cityImage}' alt='{$cityName}'>";
+        echo "<img src='images/" . htmlspecialchars($cityImage) . "' alt='" . htmlspecialchars($cityName) . "'>";
         echo "<h3 class='card-title'>" . htmlspecialchars($cityName) . "</h3>";
         echo "</div>";
         echo "</a>";
@@ -197,5 +194,3 @@ while ($country = $countryResult->fetch_assoc()) {
 </footer>
 </body>
 </html>
-
-
