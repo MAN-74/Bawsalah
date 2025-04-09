@@ -19,11 +19,14 @@ $country = isset($_POST['country']) && $_POST['country'] != "" ? (int)$_POST['co
 
 // Prepare SQL query 
 if ($hasSearched) {
-    $sql = "SELECT d.name, d.image, c.name AS city_name, co.name AS country_name
-            FROM destination d
-            JOIN city c ON d.cityID = c.cityID
-            JOIN country co ON c.countryID = co.countryID
-            WHERE d.name LIKE ?";
+ $sql = "SELECT d.name, d.image, c.name AS city_name, co.name AS country_name, cat.name AS category_name
+        FROM destination d
+        JOIN city c ON d.cityID = c.cityID
+        JOIN country co ON c.countryID = co.countryID
+        JOIN category cat ON d.categoryID = cat.categoryID
+        WHERE d.name LIKE ?";
+
+
 
     $params = [$search];
     $types = "s"; // Search query parameter for text-based search
@@ -65,7 +68,7 @@ if ($hasSearched) {
         <div class="logo-container">
             <a href="Bawhome.php">
             <img src="images/logo.png" alt="Logo" class="nav-icon"></a>
-            <a href="favorites.html">
+            <a href="favorites.php">
             <img src="images/heart.png" alt="Heart" class="nav-icon"></a>
         </div>
         <a href="profile.php">
@@ -118,11 +121,20 @@ if ($hasSearched) {
         <?php if ($result->num_rows > 0): ?>
             <div class="cards-container">
                 <?php while ($row = $result->fetch_assoc()): ?>
-                    <div class="card">
-                        <img src="images/<?php echo htmlspecialchars($row['image']); ?>" alt="<?php echo htmlspecialchars($row['name']); ?>">
-                        <h3 class="card-title"><?php echo htmlspecialchars($row['name']); ?></h3>
-                        <p class="card-info">City: <?php echo htmlspecialchars($row['city_name']); ?> | Country: <?php echo htmlspecialchars($row['country_name']); ?></p>
-                    </div>
+                   <div class="card">
+    <img src="images/<?php echo htmlspecialchars($row['image']); ?>" alt="<?php echo htmlspecialchars($row['name']); ?>">
+    <h3 class="card-title"><?php echo htmlspecialchars($row['name']); ?></h3>
+    <p class="card-info">City: <?php echo htmlspecialchars($row['city_name']); ?> | Country: <?php echo htmlspecialchars($row['country_name']); ?></p>
+
+    <!--favorites button-->
+<div class="favorite-container" 
+     onclick="location.href='addfavorite.php?name=<?= urlencode($row['name'] ?? '') ?>&category=<?= urlencode($row['category_name'] ?? '') ?>'"
+     style="background-color: #cbb696; color: #a3201c;">
+    <span class="favorite-text">Add to favorites</span>
+</div>
+
+</div>
+
                 <?php endwhile; ?>
             </div>
         <?php else: ?>
