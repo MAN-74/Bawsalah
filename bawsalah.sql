@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Apr 09, 2025 at 02:09 PM
+-- Generation Time: Apr 09, 2025 at 09:26 PM
 -- Server version: 5.7.24
 -- PHP Version: 8.3.1
 
@@ -238,18 +238,6 @@ INSERT INTO `destination` (`destinationID`, `name`, `image`, `categoryID`, `city
 -- --------------------------------------------------------
 
 --
--- Table structure for table `favorites`
---
-
-CREATE TABLE `favorites` (
-  `favoriteID` int(11) NOT NULL,
-  `userID` int(11) NOT NULL,
-  `destinationID` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `favoriteslist`
 --
 
@@ -271,7 +259,27 @@ INSERT INTO `favoriteslist` (`id`, `destinationID`, `userID`, `categoryID`) VALU
 (4, 14, 4, 1),
 (5, 18, 4, 2),
 (6, 24, 4, 3),
-(7, 17, 4, 2);
+(7, 17, 4, 2),
+(20, 76, 6, 1),
+(22, 27, 6, 1),
+(23, 19, 6, 2),
+(28, 20, 6, 2),
+(29, 13, 6, 1),
+(30, 15, 6, 1),
+(31, 16, 6, 1),
+(36, 21, 6, 3),
+(37, 22, 6, 3),
+(38, 23, 6, 3),
+(40, 1, 6, 1),
+(43, 4, 6, 1),
+(44, 5, 6, 2),
+(45, 6, 6, 2),
+(46, 7, 6, 2),
+(47, 8, 6, 2),
+(48, 9, 6, 3),
+(49, 10, 6, 3),
+(50, 11, 6, 3),
+(51, 12, 6, 3);
 
 -- --------------------------------------------------------
 
@@ -373,7 +381,8 @@ INSERT INTO `user` (`userID`, `username`, `email`, `password`) VALUES
 (2, 'sarah', 'sarah@gmail.com', '$2y$10$Zwbjw4bxo9eSMYd3zJM4pe.mLkGyiP.OaGRcQUiNSHtWiR6/8zEJC'),
 (3, 'Hatoun', 'hatoun@gmail.com', '$2y$10$IGhUvlZI0NefxWjDWVR/BedOhLbyfBETXHQAcPKysLl3fOGbXxNi6'),
 (4, 'Noora', 'noon@gmail.com', '$2y$10$tinteqPzTtuuXl4.SNnbWuKVQXZe14EpyUQZeVYSggJFoe2n3Ek0m'),
-(5, 'lama', 'lama@gmail.com', '$2y$10$mzTWmHUp/fH/s2VKqUT48uQxFzv9q2c7wyd1PG.RNDWcLwRgfB0Bq');
+(5, 'lama', 'lama@gmail.com', '$2y$10$mzTWmHUp/fH/s2VKqUT48uQxFzv9q2c7wyd1PG.RNDWcLwRgfB0Bq'),
+(6, 'maha', 'maha@outlook.com', '$2y$10$Ew3SjfWey23EY7jzlq15l.Hvn8lEMVElIfYV4.wW55CVBsRtnRu4G');
 
 --
 -- Indexes for dumped tables
@@ -405,14 +414,6 @@ ALTER TABLE `destination`
   ADD PRIMARY KEY (`destinationID`),
   ADD KEY `categoryID` (`categoryID`),
   ADD KEY `cityID` (`cityID`);
-
---
--- Indexes for table `favorites`
---
-ALTER TABLE `favorites`
-  ADD PRIMARY KEY (`favoriteID`),
-  ADD KEY `userID` (`userID`),
-  ADD KEY `destinationID` (`destinationID`);
 
 --
 -- Indexes for table `favoriteslist`
@@ -449,16 +450,10 @@ ALTER TABLE `user`
 --
 
 --
--- AUTO_INCREMENT for table `favorites`
---
-ALTER TABLE `favorites`
-  MODIFY `favoriteID` int(11) NOT NULL AUTO_INCREMENT;
-
---
 -- AUTO_INCREMENT for table `favoriteslist`
 --
 ALTER TABLE `favoriteslist`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=52;
 
 --
 -- AUTO_INCREMENT for table `memory`
@@ -470,7 +465,7 @@ ALTER TABLE `memory`
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `userID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `userID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- Constraints for dumped tables
@@ -488,13 +483,6 @@ ALTER TABLE `city`
 ALTER TABLE `destination`
   ADD CONSTRAINT `destination_ibfk_1` FOREIGN KEY (`categoryID`) REFERENCES `category` (`categoryID`),
   ADD CONSTRAINT `destination_ibfk_2` FOREIGN KEY (`cityID`) REFERENCES `city` (`cityID`);
-
---
--- Constraints for table `favorites`
---
-ALTER TABLE `favorites`
-  ADD CONSTRAINT `favorites_ibfk_1` FOREIGN KEY (`userID`) REFERENCES `user` (`userID`) ON DELETE CASCADE,
-  ADD CONSTRAINT `favorites_ibfk_2` FOREIGN KEY (`destinationID`) REFERENCES `destination` (`destinationID`) ON DELETE CASCADE;
 
 --
 -- Constraints for table `favoriteslist`
