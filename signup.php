@@ -26,6 +26,10 @@ if (empty($username)) {
     echo json_encode(["status" => "error", "field" => "name", "message" => "⚠️ Name is required"]);
     exit;
 }
+if (empty($email)) {
+    echo json_encode(["status" => "error", "field" => "email", "message" => "⚠️ Email is required"]);
+    exit;
+}
 if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
     echo json_encode(["status" => "error", "field" => "email", "message" => "⚠️ Invalid email format"]);
     exit;
@@ -36,6 +40,10 @@ if (empty($password)) {
 }
 if (strlen($password) < 8 || !preg_match('/[A-Z]/', $password) || !preg_match('/\d/', $password)) {
     echo json_encode(["status" => "error", "field" => "password", "message" => "⚠️ Password must have at least 8 characters, 1 uppercase letter, and 1 number"]);
+    exit;
+}
+if (empty($confirmPassword)) {
+    echo json_encode(["status" => "error", "field" => "confirm-password", "message" => "⚠️ Confirm Password is required"]);
     exit;
 }
 if ($password !== $confirmPassword) {
