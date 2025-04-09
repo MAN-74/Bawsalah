@@ -44,8 +44,9 @@ $result = $check_stmt->get_result();
 
 if ($result->num_rows > 0) {
     // Already exists, redirect the user
-    header("Location: favorites.php");
-    exit;
+   $previous = $_SERVER['HTTP_REFERER'];
+header("Location: $previous");
+exit;
 }
 $check_stmt->close();
 
@@ -57,7 +58,9 @@ $insert_stmt->close();
 
 $conn->close();
 
-// 6. Redirect the user to the favorites page
-header("Location: favorites.php");
+
+$previous = $_SERVER['HTTP_REFERER'];
+header("Location: $previous");
 exit;
+
 ?>
