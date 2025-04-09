@@ -24,6 +24,16 @@ $cityData = $cityResult->fetch_assoc();
 $cityID = $cityData['cityID'];
 $cityDescription = $cityData['description'];
 
+// Get landscape images
+$landscapeImages = [];
+$landscapeStmt = $conn->prepare("SELECT image FROM landscape WHERE cityID = ?");
+$landscapeStmt->bind_param("i", $cityID);
+$landscapeStmt->execute();
+$landscapeResult = $landscapeStmt->get_result();
+while ($row = $landscapeResult->fetch_assoc()) {
+    $landscapeImages[] = $row['image'];
+}
+
 // Get categories
 $categoryResult = $conn->query("SELECT categoryID, name FROM category");
 $categories = [];
@@ -122,6 +132,7 @@ while ($row = $destResult->fetch_assoc()) {
             background-color: #9E1A1A;
             margin-left: 10px;
         }
+
         .carousel-container {
             position: relative;
             width: 100%;
@@ -132,30 +143,40 @@ while ($row = $destResult->fetch_assoc()) {
             justify-content: center;
             align-items: center;
         }
+
+        .carousel {
+            width: 100%;
+            height: 100%;
+            position: relative;
+        }
+
         .carousel img {
-            max-width: 100%;
+            width: 100%;
             height: 100%;
             object-fit: cover;
             display: none;
-            border-radius: 15px;
         }
+
         .carousel img.active {
             display: block;
         }
+
         .prev, .next {
             position: absolute;
             top: 50%;
             transform: translateY(-50%);
-            background-color: rgba(0, 0, 0, 0.5);
-            color: white;
+            background: none;
+            color: #7C1F1B;
             border: none;
-            padding: 10px;
+            padding: 10px 20px;
+            font-size: 48px;
+            font-weight: bold;
             cursor: pointer;
-            border-radius: 50%;
-            font-size: 24px;
+            z-index: 2;
         }
-        .prev { left: 15px; }
-        .next { right: 15px; }
+
+        .prev { left: 10px; }
+        .next { right: 10px; }
 
         .about-section {
             padding: 20px;
@@ -235,12 +256,12 @@ while ($row = $destResult->fetch_assoc()) {
 
 <section class="carousel-container">
     <div class="carousel" id="carousel">
-        <img src="images/landscape1.jpg" class="active">
-        <img src="images/landscape2.webp">
-        <img src="images/landscape5.jpg">
+        <?php foreach ($landscapeImages as $index => $img): ?>
+            <img src="images/<?= htmlspecialchars($img) ?>" class="<?= $index === 0 ? 'active' : '' ?>">
+        <?php endforeach; ?>
     </div>
-    <button class="prev" onclick="moveSlide(-1)">&#10094;</button>
-    <button class="next" onclick="moveSlide(1)">&#10095;</button>
+    <button class="prev" onclick="moveSlide(-1)">‹</button>
+    <button class="next" onclick="moveSlide(1)">›</button>
 </section>
 
 <section class="about-section">
