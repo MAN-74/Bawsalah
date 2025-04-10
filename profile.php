@@ -204,7 +204,7 @@ $conn->close();
 <header class="header">
   <div class="logo-container">
     <a href="Bawhome.php"><img src="images/logo.png" alt="Logo" class="nav-icon"></a>
-    <a href="favorites.html"><img src="images/heart.png" alt="Heart" class="nav-icon"></a>
+    <a href="favorites.php"><img src="images/heart.png" alt="Heart" class="nav-icon"></a>
   </div>
   <a href="profile.php"><img src="images/profile_color.png" alt="Profile" class="nav-icon"></a>
 </header>
