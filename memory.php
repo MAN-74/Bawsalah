@@ -189,7 +189,7 @@ $memories = $result->fetch_all(MYSQLI_ASSOC);
         <div class="logo-container">
             <a href="Bawhome.php">
                 <img src="images/logo.png" alt="Logo" class="nav-icon"></a>
-                <a href="favorites.html">
+                <a href="favorites.php">
                 <img src="images/heart.png" alt="Heart" class="nav-icon"></a>
         </div>
         <a href="profile.php">
